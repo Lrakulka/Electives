@@ -40,13 +40,7 @@ public class SaveLecturerStudentCommand implements Command {
 	contract.setMark(mark);
 	contract.setComment(comment);
 	contractDao.update(contract);
-
-	/*Contract contractN = contractDao.getById(contractId);
-	Student studentN = DaoFacadeFactory.getDaoFactory().getStudentDao().getById(contract.getIdStudent());
-	request.setAttribute(LecturerStudentCommand.CONTRACT_DATA, contractN);
-	request.setAttribute(LecturerStudentCommand.STUDENT_DATA, studentN);
-	page = ConfigurationManager.getInstance().getProperty(
-		ConfigurationManager.LECTURER_STUDENT_PAGE_PATH);*/
+	
 	return (new LoginLecturerCommand()).execute(request, response);
     }
 

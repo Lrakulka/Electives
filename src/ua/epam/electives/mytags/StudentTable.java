@@ -60,7 +60,7 @@ public class StudentTable extends TagSupport {
 	StringBuilder tableBuilder = new StringBuilder();
 
 	if (studentData == null || studentData.length == 0) {
-	    tableBuilder.append("<tr><td>" + noCourses + "</td></tr>");
+	    tableBuilder.append("<h3>" + noCourses + "</h3>");
 	} else {
 	    tableBuilder.append("<table border=\"2\" cellpadding=\"8\">");
 	    tableBuilder.append("<tr><td>№</td><td>" + courseName + "</td><td>"
@@ -71,31 +71,29 @@ public class StudentTable extends TagSupport {
 		tableBuilder.append("<td>"
 			+ studentData[i].getCourse().getName() + "</td>");
 		tableBuilder.append("<td>"
-			+ studentData[i].getLecturer().getFullName()
-			+ "</td>");
+			+ studentData[i].getLecturer().getFullName() + "</td>");
 		tableBuilder.append("<td>"
 			+ studentData[i].getContract().getFinishedPercent()
 			+ "</td>");
+		if (studentData[i].getContract().getMark() == null) {
+		    tableBuilder.append("<td>---</td>");
+		} else {
+		    tableBuilder.append("<td>"
+			    + studentData[i].getContract().getMark() + "</td>");
+		}
 		tableBuilder
-			.append("<td>"
-				+ studentData[i].getContract().getMark()
-				+ "</td>");
-		/*
-		 * 
-		"<form name=\"LecturerTableForm\" action=\"controller\" "
-			+ "method=\"post\"><input type=\"hidden\" name=\"command\" "
-			+ "value=\"lecturerStudent\" />"
-		 */
+			.append("<form name=\"LecturerTableForm\" action=\"controller\" "
+				+ "method=\"post\"><input type=\"hidden\" name=\"courseId\" "
+				+ "value=\""
+				+ studentData[i].getContract().getId()
+				+ "\" />");
 		tableBuilder
-		    .append("<td><button name=\"ButtonStudentInfo\" value=\""
-			    + studentData[i].getContract().getId()
-			    + "\">" + buttonInfo + "</button></td>");
+			.append("<td><button name=\"command\" value=\"courseInfo\">"
+				+ buttonInfo + "</button></td>");
 		tableBuilder
-		    .append("<td><button name=\"ButtonStudentInfo\" value=\""
-			    + studentData[i].getContract().getId()
-			    + "\">" + buttonUnsubscribe + "</button></td>");
-		// tableBuilder.append("</form>");
-		tableBuilder.append("</tr>");
+			.append("<td><button name=\"command\" value=\"unsubscribe\">"
+				+ buttonUnsubscribe
+				+ "</button></td></form></tr>");
 	    }
 	    tableBuilder.append("</table>");
 	}
