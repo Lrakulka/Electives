@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import ua.epam.electives.dao.DaoFacadeFactory;
 import ua.epam.electives.entities.Contract;
-import ua.epam.electives.entities.Student;
+import ua.epam.electives.entities.Course;
 import ua.epam.electives.maneger.ConfigurationManager;
 
-public class LecturerStudentCommand implements Command {
-    public static final String TYPE_COMMAND = "lecturerStudent";
+public class StudentCourseInfo implements Command {
+    public static final String COMMAND_TYPE = "courseInfo";
+    public static final String CONTRACT_ID = "courseId";
+    public static final String COURSE_DATA = "courseData";
     public static final String CONTRACT_DATA = "contractData";
-    public static final String STUDENT_DATA = "studentData";
-    public static final String CONTRACT_ID = "contractId";
     
     @Override
     public String execute(HttpServletRequest request,
@@ -24,17 +24,18 @@ public class LecturerStudentCommand implements Command {
 	Integer contractId = Integer.valueOf(request.getParameter(CONTRACT_ID));
 	DaoFacadeFactory facadeFactory = DaoFacadeFactory.getDaoFactory();
 	Contract contract = facadeFactory.getContractDao().getById(contractId);
-	Student student = facadeFactory.getStudentDao().getById(contract.getIdStudent());
+	Course course = facadeFactory.getCourseDao().getById(contract.getIdCourse());
 	request.setAttribute(CONTRACT_DATA, contract);
-	request.setAttribute(STUDENT_DATA, student);
+	request.setAttribute(COURSE_DATA, course);
 	page = ConfigurationManager.getInstance().getProperty(
-		ConfigurationManager.LECTURER_STUDENT_PAGE_PATH);
+		ConfigurationManager.STUDENT_COURSE_PAGE_PATH);
 	return page;
     }
 
     @Override
     public String getCommandType() {
-	return TYPE_COMMAND;
+	// TODO Auto-generated method stub
+	return COMMAND_TYPE;
     }
 
 }

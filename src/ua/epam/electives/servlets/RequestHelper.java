@@ -12,6 +12,7 @@ import ua.epam.electives.commands.LoginLecturerCommand;
 import ua.epam.electives.commands.LoginStudentCommand;
 import ua.epam.electives.commands.NoCommand;
 import ua.epam.electives.commands.SaveLecturerStudentCommand;
+import ua.epam.electives.commands.StudentCourseInfo;
 import ua.epam.electives.commands.Unsubscrive;
 import ua.epam.electives.dao.DaoFacadeFactory;
 import ua.epam.electives.entities.AuthorizedUser;
@@ -38,6 +39,7 @@ public class RequestHelper {
 		new SaveLecturerStudentCommand());
 	studentCommands.put(LOGIN, new LoginStudentCommand());
 	studentCommands.put(Unsubscrive.COMMAND_TYPE, new Unsubscrive());
+	studentCommands.put(StudentCourseInfo.COMMAND_TYPE, new StudentCourseInfo());
 	exitCommand = new ExitCommand();
 	commands.put("exit", exitCommand);
 

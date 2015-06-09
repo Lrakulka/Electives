@@ -73,7 +73,7 @@ public class LecturerTable extends TagSupport {
 			tableBuilder.append("<td>---</td>");
 		    }
 		    tableBuilder
-			    .append("<td><button name=\"ButtonStudentInfo\" value=\""
+			    .append("<td><button name=\"contractId\" value=\""
 				    + lData.getContracts().get(i).getId()
 				    + "\">" + buttonInfo + "</button></td>");
 		    tableBuilder.append("</tr>");

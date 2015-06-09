@@ -16,7 +16,7 @@ import ua.epam.electives.servlets.RequestHelper;
 
 public class LoginStudentCommand implements Command {
     public static final String COMMAND_TYPE = "loginStudent";
-    private static final String STUDENT_DATA = "studentData";
+    public static final String STUDENT_DATA = "studentData";
     
     @Override
     public String execute(HttpServletRequest request,

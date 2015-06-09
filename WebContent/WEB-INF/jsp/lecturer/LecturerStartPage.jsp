@@ -25,7 +25,7 @@
 		<fmt:message key="lecturer.label.hello" />
 		<c:out value="${sessionScope.authorizedUser.fullName}"></c:out>
 	</h2>
-	<fmt:message key="lecturerTable.column.noStudent " var="noStudent" />
+	<fmt:message key="lecturerTable.column.noStudent" var="noStudent" />
 	<fmt:message key="lecturerTable.column.studentName" var="studentName" />
 	<fmt:message key="lecturerTable.column.mark" var="mark" />
 	<fmt:message key="lecturerTable.column.studyProgress" var="studyProgress" />

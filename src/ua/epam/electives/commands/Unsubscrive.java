@@ -11,7 +11,7 @@ import ua.epam.electives.dao.DaoFacadeFactory;
 
 public class Unsubscrive implements Command {
     public static final String COMMAND_TYPE = "unsubscribe";
-    private static final String CONTRACT_ID = "courseId";
+    public static final String CONTRACT_ID = "courseId";
     
     @Override
     public String execute(HttpServletRequest request,

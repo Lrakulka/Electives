@@ -26,18 +26,15 @@
 		<input type="hidden" name="contractId" value="${requestScope.contractData.id}" />
 		<table cellpadding="3pt">
 			<tr>
-				<td><fmt:message key="lecturer.student.course.finished" /> :</td>
+				<td><fmt:message key="student.course.finished" /> :</td>
 				<c:set var="finishedPercent" value="${requestScope.contractData.finishedPercent}" />
 				<td><input type="text" name="courseFinished" size="3" value="${finishedPercent}"/>%</td>
 			</tr>
 			<tr>
-				<td><fmt:message key="lecturer.student.course.mark" /> :</td>
+				<td><fmt:message key="student.course.mark" /> :</td>
 				<c:set var="mark" value="${requestScope.contractData.mark}" />
 				<c:choose>
 					<c:when test="${mark eq null}">
-						<td><input type="text" name="mark" size="2" value="---"/></td>
-					</c:when>
-					<c:when test="${mark eq -1}">
 						<td><input type="text" name="mark" size="2" value="---"/></td>
 					</c:when>
 					<c:otherwise>
@@ -46,18 +43,17 @@
 				</c:choose>
 			</tr>
 			<tr>
-				<td><fmt:message key="lecturer.student.course.comment" /> :</td>
+				<td><fmt:message key="student.course.comment" /> :</td>
 				<c:set var="comment" value="${requestScope.contractData.comment}" />
 				<td><textarea cols="40" rows="5" name="comment">${comment}</textarea></td>
 			</tr>
 		</table>
-		<p />
 
 		<button name="command" value="saveLecturerStudent">
-			<fmt:message key="lecturer.student.button.save" />
+			<fmt:message key="button.save" />
 		</button>
 		<button name="command" value="login">
-			<fmt:message key="lecturer.student.button.onmain" />
+			<fmt:message key="button.onmain" />
 		</button>
 	</form>
 </body>

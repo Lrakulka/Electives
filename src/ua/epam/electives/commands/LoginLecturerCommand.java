@@ -16,7 +16,7 @@ import ua.epam.electives.servlets.RequestHelper;
 
 public class LoginLecturerCommand implements Command {
     public static final String COMMAND_TYPE = "loginLecturer";
-    private static final String LECTURER_DATA = "lecturerData";
+    public static final String LECTURER_DATA = "lecturerData";
 
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {

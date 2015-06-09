@@ -12,10 +12,10 @@ import ua.epam.electives.entities.Contract;
 
 public class SaveLecturerStudentCommand implements Command {
     public static final String COMMAND_TYPE = "saveLecturerStudent";
-    private static final String MARK = "mark";
-    private static final String COURSE_FINISHED = "courseFinished";
-    private static final String COMMENT = "comment";
-    private static final String CONTRACT_ID = "contractId";
+    public static final String MARK = "mark";
+    public static final String COURSE_FINISHED = "courseFinished";
+    public static final String COMMENT = "comment";
+    public static final String CONTRACT_ID = "contractId";
 
     @Override
     public String execute(HttpServletRequest request,
