@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.servlets.RequestHelper;
 
@@ -22,7 +22,7 @@ public class AuthorizeCommand implements Command {
 	String login = request.getParameter(PARAM_NAME_LOGIN);
 	String pass = request.getParameter(PARAM_NAME_PASSWORD);
 	// проверка логина и пароля
-	DaoFacadeFactory daoFactory = DaoFacadeFactory.getDaoFactory();
+	DaoFactory daoFactory = DaoFactory.getDaoFactory();
 	AuthorizedUser authorizedUser = daoFactory.getAuthorizeUser()
 		.authorize(login, pass);
 	request.removeAttribute(PARAM_NAME_LOGIN);

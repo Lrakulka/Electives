@@ -12,20 +12,15 @@ import org.apache.log4j.Logger;
 import ua.epam.electives.dao.CourseDao;
 import ua.epam.electives.entities.Course;
 
-public class CourseJdbcDaoSingleton extends CommonJdbcDao<Course> implements
+public class CourseJdbcDao extends CommonJdbcDao<Course> implements
 	CourseDao {
     private static final Logger LOGGER = Logger
-	    .getLogger(CourseJdbcDaoSingleton.class);
-    private static CourseDao courseDao = new CourseJdbcDaoSingleton();
+	    .getLogger(CourseJdbcDao.class);
     private final Course.CourseTableInfo courseTableInfo;
 
-    private CourseJdbcDaoSingleton() {
+    public CourseJdbcDao() {
 	courseTableInfo = new Course.CourseTableInfo();
 	super.setTableInfo(courseTableInfo);
-    }
-
-    public static CourseDao getCourseJdbcDao() {
-	return courseDao;
     }
 
     @Override

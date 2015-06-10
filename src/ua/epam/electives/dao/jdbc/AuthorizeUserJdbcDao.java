@@ -14,17 +14,9 @@ import ua.epam.electives.entities.Student;
 
 public class AuthorizeUserJdbcDao implements AuthorizeUserDao {
     private static final Logger LOGGER = Logger
-	    .getLogger(ContractJdbcDaoSingleton.class);
-    private static AuthorizeUserDao authorizeUser = new AuthorizeUserJdbcDao();
+	    .getLogger(ContractJdbcDao.class);
     private Lecturer.LecturerTableInfo lecturerTableInfo = new Lecturer.LecturerTableInfo();
     private Student.StudentTableInfo studentTableInfo = new Student.StudentTableInfo();
-
-    private AuthorizeUserJdbcDao() {
-    }
-
-    public static AuthorizeUserDao getAuthorizeUserJdbcDao() {
-	return authorizeUser;
-    }
 
     @Override
     public AuthorizedUser authorize(String name, String pwd) {

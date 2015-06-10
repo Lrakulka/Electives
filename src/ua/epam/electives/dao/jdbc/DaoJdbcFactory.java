@@ -5,19 +5,19 @@ import org.apache.log4j.Logger;
 import ua.epam.electives.dao.AuthorizeUserDao;
 import ua.epam.electives.dao.ContractDao;
 import ua.epam.electives.dao.CourseDao;
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.dao.LecturerDao;
 import ua.epam.electives.dao.StudentDao;
 
-public class DaoJdbcFacade extends DaoFacadeFactory {
-    private static final Logger LOGGER = Logger.getLogger(DaoJdbcFacade.class);
+public class DaoJdbcFactory extends DaoFactory {
+    private static final Logger LOGGER = Logger.getLogger(DaoJdbcFactory.class);
 
     @Override
     public LecturerDao getLecturerDao() {
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get lecturer DAO");
 	}
-	return LecturerJdbcDaoSingleton.getLectureJdbcDao();
+	return new LecturerJdbcDao();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class DaoJdbcFacade extends DaoFacadeFactory {
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get student DAO");
 	}
-	return StudentJdbcDaoSingleton.getStudentJdbcDao();
+	return new StudentJdbcDao();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class DaoJdbcFacade extends DaoFacadeFactory {
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get course DAO");
 	}
-	return CourseJdbcDaoSingleton.getCourseJdbcDao();
+	return new CourseJdbcDao();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class DaoJdbcFacade extends DaoFacadeFactory {
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get contract DAO");
 	}
-	return ContractJdbcDaoSingleton.getContractJdbcDao();
+	return new ContractJdbcDao();
     }
 
     @Override
@@ -49,6 +49,6 @@ public class DaoJdbcFacade extends DaoFacadeFactory {
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get authorize user DAO");
 	}
-	return AuthorizeUserJdbcDao.getAuthorizeUserJdbcDao();
+	return new AuthorizeUserJdbcDao();
     }
 }

@@ -13,20 +13,15 @@ import java.sql.Statement;
 import ua.epam.electives.dao.ContractDao;
 import ua.epam.electives.entities.Contract;
 
-public class ContractJdbcDaoSingleton extends CommonJdbcDao<Contract> implements
+public class ContractJdbcDao extends CommonJdbcDao<Contract> implements
 	ContractDao {
     private static final Logger LOGGER = Logger
-	    .getLogger(ContractJdbcDaoSingleton.class);
-    private static ContractDao contractDao = new ContractJdbcDaoSingleton();
+	    .getLogger(ContractJdbcDao.class);
     private final Contract.ContractTableInfo contractTableInfo;
 
-    private ContractJdbcDaoSingleton() {
+    public ContractJdbcDao() {
 	contractTableInfo = new Contract.ContractTableInfo();
 	super.setTableInfo(contractTableInfo);
-    }
-
-    public static ContractDao getContractJdbcDao() {
-	return contractDao;
     }
 
     @Override

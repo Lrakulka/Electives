@@ -2,12 +2,12 @@ package ua.epam.electives.dao;
 
 import org.apache.log4j.Logger;
 
-import ua.epam.electives.dao.jdbc.DaoJdbcFacade;
+import ua.epam.electives.dao.jdbc.DaoJdbcFactory;
 
-public abstract class DaoFacadeFactory {
+public abstract class DaoFactory {
     private static final Logger LOGGER = Logger
-	    .getLogger(DaoFacadeFactory.class);
-    private static DaoFacadeFactory currDaoFactory;
+	    .getLogger(DaoFactory.class);
+    private static DaoFactory currDaoFactory;
 
     /*
      * Gives access to lecture data
@@ -49,9 +49,9 @@ public abstract class DaoFacadeFactory {
      * 
      * @return DAO Factory object
      */
-    public static DaoFacadeFactory getDaoFactory() {
+    public static DaoFactory getDaoFactory() {
 	if (currDaoFactory == null) {
-	    currDaoFactory = new DaoJdbcFacade();
+	    currDaoFactory = new DaoJdbcFactory();
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("DaoJdbcFactory created");

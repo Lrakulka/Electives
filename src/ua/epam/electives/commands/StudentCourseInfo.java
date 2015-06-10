@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.Contract;
 import ua.epam.electives.entities.Course;
 import ua.epam.electives.maneger.ConfigurationManager;
@@ -22,7 +22,7 @@ public class StudentCourseInfo implements Command {
 	    HttpServletResponse response) throws ServletException, IOException {
 	String page;
 	Integer contractId = Integer.valueOf(request.getParameter(CONTRACT_ID));
-	DaoFacadeFactory facadeFactory = DaoFacadeFactory.getDaoFactory();
+	DaoFactory facadeFactory = DaoFactory.getDaoFactory();
 	Contract contract = facadeFactory.getContractDao().getById(contractId);
 	Course course = facadeFactory.getCourseDao().getById(contract.getIdCourse());
 	request.setAttribute(CONTRACT_DATA, contract);

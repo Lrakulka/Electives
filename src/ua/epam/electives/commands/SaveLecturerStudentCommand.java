@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.epam.electives.dao.ContractDao;
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.Contract;
 
 public class SaveLecturerStudentCommand implements Command {
@@ -20,7 +20,7 @@ public class SaveLecturerStudentCommand implements Command {
     @Override
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
-	ContractDao contractDao = DaoFacadeFactory.getDaoFactory().getContractDao();
+	ContractDao contractDao = DaoFactory.getDaoFactory().getContractDao();
 	Integer contractId = Integer.valueOf(request.getParameter(CONTRACT_ID));
 	Contract contract = contractDao.getById(contractId);
 	Integer mark;

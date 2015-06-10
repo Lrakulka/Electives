@@ -14,27 +14,22 @@ import ua.epam.electives.dao.StudentDao;
 import ua.epam.electives.entities.Contract;
 import ua.epam.electives.entities.Student;
 
-public class StudentJdbcDaoSingleton extends CommonJdbcDao<Student> implements
+public class StudentJdbcDao extends CommonJdbcDao<Student> implements
 	StudentDao {
     private static final Logger LOGGER = Logger
-	    .getLogger(StudentJdbcDaoSingleton.class);
-    private static StudentDao studentDao = new StudentJdbcDaoSingleton();
+	    .getLogger(StudentJdbcDao.class);
     private final Student.StudentTableInfo tableInfo;
 
-    private StudentJdbcDaoSingleton() {
+    public StudentJdbcDao() {
 	tableInfo = new Student.StudentTableInfo();
 	super.setTableInfo(tableInfo);
-    }
-
-    public static StudentDao getStudentJdbcDao() {
-	return studentDao;
     }
 
     @Override
     public Student getStudent(Integer contractId) {
 	Student student = null;
 	NDC.push("Get student by contract id");
-	Contract contract = ContractJdbcDaoSingleton.getContractJdbcDao()
+	Contract contract = (new ContractJdbcDao())
 		.getById(contractId);
 	student = getById(contract.getIdStudent());
 	NDC.pop();
@@ -74,8 +69,8 @@ public class StudentJdbcDaoSingleton extends CommonJdbcDao<Student> implements
 		}
 		for (int j = 0; j < contracts.size(); ++j) {
 		    if ((students.get(j) == null)
-			    && (contracts.get(j).getIdStudent()
-				    .equals(rs.getInt(1)))) {
+			    && (contracts.get(j).getIdStudent().equals(rs
+				    .getInt(1)))) {
 			for (int i = 0; i < obts.length; ++i) {
 			    obts[i] = rs.getObject(i + 1);
 			}

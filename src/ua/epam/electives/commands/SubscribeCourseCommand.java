@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.entities.Contract;
 
@@ -18,7 +18,7 @@ public class SubscribeCourseCommand implements Command {
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
 	Integer courseId = Integer.valueOf(request.getParameter(COURSE_ID));
-	DaoFacadeFactory facadeFactory = DaoFacadeFactory.getDaoFactory();
+	DaoFactory facadeFactory = DaoFactory.getDaoFactory();
 	AuthorizedUser user = (AuthorizedUser) request.getSession()
 		.getAttribute(AuthorizeCommand.COMMAND_TYPE);
 	Contract contract = new Contract(-1, "", null, courseId, user.getId(), (short) 0);

@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.entities.Course;
 import ua.epam.electives.entities.LecturerData;
@@ -20,7 +20,7 @@ public class StartLecturerCommand implements Command {
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
 	String page = null;
-	DaoFacadeFactory daoFactory = DaoFacadeFactory.getDaoFactory();
+	DaoFactory daoFactory = DaoFactory.getDaoFactory();
 	AuthorizedUser authorizedUser = (AuthorizedUser) request.getSession()
 		.getAttribute(AuthorizeCommand.COMMAND_TYPE);
 	List<Course> courses = daoFactory.getCourseDao().getLecturerCourses(

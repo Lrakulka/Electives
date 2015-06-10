@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ua.epam.electives.dao.ContractDao;
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 
 public class Unsubscrive implements Command {
     public static final String COMMAND_TYPE = "unsubscribe";
@@ -16,7 +16,7 @@ public class Unsubscrive implements Command {
     @Override
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
-	ContractDao contractDao = DaoFacadeFactory.getDaoFactory().getContractDao();
+	ContractDao contractDao = DaoFactory.getDaoFactory().getContractDao();
 	Integer contractId = Integer.valueOf(request.getParameter(CONTRACT_ID));
 	contractDao.remove(contractId);
 	return (new StartStudentCommand()).execute(request, response);

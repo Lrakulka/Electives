@@ -13,23 +13,18 @@ import ua.epam.electives.entities.Lecturer;
  * @author KrabiySok
  *
  */
-public class LecturerJdbcDaoSingleton extends CommonJdbcDao<Lecturer> implements
+public class LecturerJdbcDao extends CommonJdbcDao<Lecturer> implements
 	LecturerDao {
-    private static LecturerDao lecturerDao = new LecturerJdbcDaoSingleton();
 
-    private LecturerJdbcDaoSingleton() {
+    public LecturerJdbcDao() {
 	super(new Lecturer.LecturerTableInfo());
-    }
-
-    public static LecturerDao getLectureJdbcDao() {
-	return lecturerDao;
     }
 
     @Override
     public Lecturer getLecturer(Integer courseId) {
 	Lecturer lecturer = null;
 	NDC.push("Get lecturer by course id");
-	Course course = CourseJdbcDaoSingleton.getCourseJdbcDao().getById(
+	Course course = (new CourseJdbcDao()).getById(
 		courseId);
 	lecturer = getById(course.getId_lecturer());
 	NDC.pop();

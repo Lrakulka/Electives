@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import ua.epam.electives.dao.ContractDao;
 import ua.epam.electives.dao.CourseDao;
-import ua.epam.electives.dao.DaoFacadeFactory;
+import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.dao.LecturerDao;
 import ua.epam.electives.dao.StudentDao;
 import ua.epam.electives.dao.jdbc.DaoJdbcConnection;
@@ -22,13 +22,13 @@ import ua.epam.electives.entities.Student;
 
 @SuppressWarnings("serial")
 public class Tests {
-    private static ContractDao contractDao = DaoFacadeFactory.getDaoFactory()
+    private static ContractDao contractDao = DaoFactory.getDaoFactory()
 	    .getContractDao();
-    private static CourseDao courseDao = DaoFacadeFactory.getDaoFactory()
+    private static CourseDao courseDao = DaoFactory.getDaoFactory()
 	    .getCourseDao();
-    private static LecturerDao lecturerDao = DaoFacadeFactory.getDaoFactory()
+    private static LecturerDao lecturerDao = DaoFactory.getDaoFactory()
 	    .getLecturerDao();
-    private static StudentDao studentDao = DaoFacadeFactory.getDaoFactory()
+    private static StudentDao studentDao = DaoFactory.getDaoFactory()
 	    .getStudentDao();
     private static List<Lecturer> lecturers;
     private static List<Student> students;
@@ -312,32 +312,32 @@ public class Tests {
 
     @Test
     public void authorizeFailed() {
-	assertTrue(DaoFacadeFactory.getDaoFactory().getAuthorizeUser()
+	assertTrue(DaoFactory.getDaoFactory().getAuthorizeUser()
 		.authorize("sfd", "-1-21") == null);
     }
 
     @Test
     public void authorizeLecturer() {
-	assertTrue(DaoFacadeFactory.getDaoFactory().getAuthorizeUser()
+	assertTrue(DaoFactory.getDaoFactory().getAuthorizeUser()
 		.authorize(lecturers.get(1).getFullName(), lecturersPwd[1])
 		.equals(lecturers.get(1)));
     }
 
     @Test
     public void authorizeStudent() {
-	assertTrue(DaoFacadeFactory.getDaoFactory().getAuthorizeUser()
+	assertTrue(DaoFactory.getDaoFactory().getAuthorizeUser()
 		.authorize(students.get(1).getFullName(), studentsPwd[1])
 		.equals(students.get(1)));
     }
 
     @Test
     public void getAllStudent() {
-	assertTrue(DaoFacadeFactory
+	assertTrue(DaoFactory
 		.getDaoFactory()
 		.getStudentDao()
 		.getAllStudent(contracts)
 		.containsAll(
-			DaoFacadeFactory.getDaoFactory().getStudentDao()
+			DaoFactory.getDaoFactory().getStudentDao()
 				.getAll()));
     }
 
