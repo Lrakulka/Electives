@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import ua.epam.electives.commands.AllCoursesCommand;
 import ua.epam.electives.commands.AuthorizeFailedCommand;
 import ua.epam.electives.commands.Command;
 import ua.epam.electives.commands.ExitCommand;
@@ -13,6 +14,7 @@ import ua.epam.electives.commands.LoginStudentCommand;
 import ua.epam.electives.commands.NoCommand;
 import ua.epam.electives.commands.SaveLecturerStudentCommand;
 import ua.epam.electives.commands.StudentCourseInfo;
+import ua.epam.electives.commands.SubscribeCourseCommand;
 import ua.epam.electives.commands.Unsubscrive;
 import ua.epam.electives.dao.DaoFacadeFactory;
 import ua.epam.electives.entities.AuthorizedUser;
@@ -40,6 +42,8 @@ public class RequestHelper {
 	studentCommands.put(LOGIN, new LoginStudentCommand());
 	studentCommands.put(Unsubscrive.COMMAND_TYPE, new Unsubscrive());
 	studentCommands.put(StudentCourseInfo.COMMAND_TYPE, new StudentCourseInfo());
+	studentCommands.put(SubscribeCourseCommand.TYPE_COMMAND, new SubscribeCourseCommand());
+	studentCommands.put(AllCoursesCommand.COMMAND_TYPE, new AllCoursesCommand());
 	exitCommand = new ExitCommand();
 	commands.put("exit", exitCommand);
 

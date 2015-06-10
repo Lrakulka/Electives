@@ -25,8 +25,8 @@
 		<c:out value="${sessionScope.authorizedUser.fullName}"></c:out>
 	</h2>
 	<fmt:message key="studentTable.column.noCourses" var="noCourses" />
-	<fmt:message key="studentTable.column.CourseName" var="courseName" />
-	<fmt:message key="studentTable.column.LecturerName" var="lecturerName" />
+	<fmt:message key="table.column.courseName" var="courseName" />
+	<fmt:message key="table.column.lecturerName" var="lecturerName" />
 	<fmt:message key="studentTable.column.courseProgress"
 		var="courseProgress" />
 	<fmt:message key="studentTable.column.mark" var="mark" />
@@ -38,7 +38,7 @@
 		courseProgress="${courseProgress}" courseName="${courseName}" mark="${mark}"
 		buttonUnsubscribe="${buttonUnsubscribe}" buttonInfo="${buttonInfo}" />
 	<form name="coursesListForm" action="controller" method="post">
-		<input type="hidden" name="command" value="coursesListForm" />
+		<input type="hidden" name="command" value="allCourses" />
 		<fmt:message key="student.button.allCourses" var="buttonValue" />
 		<input type="submit" value="${buttonValue}" />
 	</form>
