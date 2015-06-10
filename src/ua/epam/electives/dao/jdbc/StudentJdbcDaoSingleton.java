@@ -44,19 +44,27 @@ public class StudentJdbcDaoSingleton extends CommonJdbcDao<Student> implements
     @Override
     public List<Student> getAllStudent(List<Contract> contracts) {
 	List<Student> students = new ArrayList<>(contracts.size());
+	for (int i = 0; i < contracts.size(); ++i) {
+	    students.add(null);
+	}
 	Student student = null;
+	int studentsNumb = 0;
 	Object[] obts = new Object[3];
 	Connection conn = DaoJdbcConnection.getConnection();
 	try (Statement query = (Statement) conn.createStatement()) {
-	    StringBuilder stringBuilder = new StringBuilder("SELECT * FROM "
-		    + tableInfo.getTableName() + " WHERE "
-		    + tableInfo.getTableFieldsName()[0] + " in (");
-	    for (Contract contract : contracts) {
-		stringBuilder.append(contract.getIdStudent()).append(",");
-	    }
-	    stringBuilder.setCharAt(stringBuilder.length() - 1, ')');
+	    // Query not return duplicates ( in(1, 1, 2, 1)) and not guarantee
+	    // same order
+	    StringBuilder stringBuilder = new StringBuilder();
+	    /*
+	     * = new StringBuilder("SELECT * FROM " + tableInfo.getTableName() +
+	     * " WHERE " + tableInfo.getTableFieldsName()[0] + " in ("); for
+	     * (Contract contract : contracts) {
+	     * stringBuilder.append(contract.getIdStudent()).append(","); }
+	     * stringBuilder.setCharAt(stringBuilder.length() - 1, ')');
+	     */
+	    stringBuilder.append("SELECT * FROM " + tableInfo.getTableName());
 	    ResultSet rs = query.executeQuery(stringBuilder.toString());
-	    while (rs.next()) {
+	    lab1: while (rs.next()) {
 		try {
 		    student = tableInfo.getEntityClass().newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
@@ -64,22 +72,33 @@ public class StudentJdbcDaoSingleton extends CommonJdbcDao<Student> implements
 			    + contracts.toString(), e);
 		    return null;
 		}
-		for (int i = 0; i < obts.length; ++i) {
-		    obts[i] = rs.getObject(i + 1);
+		for (int j = 0; j < contracts.size(); ++j) {
+		    if ((students.get(j) == null)
+			    && (contracts.get(j).getIdStudent()
+				    .equals(rs.getInt(1)))) {
+			for (int i = 0; i < obts.length; ++i) {
+			    obts[i] = rs.getObject(i + 1);
+			}
+			student.setValues(obts);
+			students.set(j, student);
+			studentsNumb++;
+			if (studentsNumb == contracts.size()) {
+			    break lab1;
+			}
+		    }
 		}
-		student.setValues(obts);
-		students.add(student);
 	    }
 	} catch (SQLException e) {
 	    LOGGER.error("Get all student " + tableInfo.getTableName() + " "
 		    + contracts.toString(), e);
 	    return null;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Delete " + tableInfo.getTableName() + " rows count="

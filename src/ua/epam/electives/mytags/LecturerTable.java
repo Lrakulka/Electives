@@ -50,41 +50,50 @@ public class LecturerTable extends TagSupport {
 		"<form name=\"LecturerTableForm\" action=\"controller\" "
 			+ "method=\"post\"><input type=\"hidden\" name=\"command\" "
 			+ "value=\"lecturerStudent\" /><table border=\"2\" cellpadding=\"8\">");
-	for (LecturerData lData : lecturerData) {
-	    tableBuilder.append("<tr><td>" + lData.getCourse().getName()
-		    + "</td></tr>");
-	    if (lData.getContracts().isEmpty()) {
-		tableBuilder.append("<tr><td>" + noStudent + "</td></tr>");
-	    } else {
-		tableBuilder.append("<tr><td>№</td><td>" + studentName
-			+ "</td><td>" + studyProgress + "</td><td>" + mark
+
+	try {
+	    for (LecturerData lData : lecturerData) {
+		tableBuilder.append("<tr><td>" + lData.getCourse().getName()
 			+ "</td></tr>");
-		for (int i = 0; i < lData.getContracts().size(); ++i) {
-		    tableBuilder.append("<tr><td>" + i + 1 + "</td><td>"
-			    + lData.getStudents().get(i).getFullName()
-			    + "</td><td>"
-			    + lData.getContracts().get(i).getFinishedPercent()
-			    + "%</td>");
-		    if (lData.getContracts().get(i).isFinished()) {
-			tableBuilder.append("<td>"
-				+ lData.getContracts().get(i).getMark()
-				+ "</td>");
-		    } else {
-			tableBuilder.append("<td>---</td>");
+		if (lData.getContracts().isEmpty()) {
+		    tableBuilder.append("<tr><td>" + noStudent + "</td></tr>");
+		} else {
+		    tableBuilder.append("<tr><td>№</td><td>" + studentName
+			    + "</td><td>" + studyProgress + "</td><td>" + mark
+			    + "</td></tr>");
+		    for (int i = 0; i < lData.getContracts().size(); ++i) {
+			tableBuilder.append("<tr><td>"
+				+ (i + 1)
+				+ "</td><td>"
+				+ lData.getStudents().get(i).getFullName()
+				+ "</td><td>"
+				+ lData.getContracts().get(i)
+					.getFinishedPercent() + "%</td>");
+			if (lData.getContracts().get(i).isFinished()) {
+			    tableBuilder.append("<td>"
+				    + lData.getContracts().get(i).getMark()
+				    + "</td>");
+			} else {
+			    tableBuilder.append("<td>---</td>");
+			}
+			tableBuilder
+				.append("<td><button name=\"contractId\" value=\""
+					+ lData.getContracts().get(i).getId()
+					+ "\">" + buttonInfo + "</button></td>");
+			tableBuilder.append("</tr>");
 		    }
-		    tableBuilder
-			    .append("<td><button name=\"contractId\" value=\""
-				    + lData.getContracts().get(i).getId()
-				    + "\">" + buttonInfo + "</button></td>");
-		    tableBuilder.append("</tr>");
 		}
 	    }
-	}
-	tableBuilder.append("</table></form>");
-	try {
+	    tableBuilder.append("</table></form>");
 	    pageContext.getOut().write(tableBuilder.toString());
-	} catch (IOException e) {
+	} catch (Exception e) {
 	    LOGGER.error("Problem in lecture table(tag)", e);
+	    e.printStackTrace();
+	    try {
+		pageContext.getOut().write("Lecturer table arror");
+	    } catch (IOException e1) {
+		LOGGER.error("Problem in lecture table(tag) error message", e1);
+	    }
 	}
 	return SKIP_BODY;
     }
