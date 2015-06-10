@@ -14,6 +14,7 @@ public class LecturerTable extends TagSupport {
      */
     private static final long serialVersionUID = 8043435102796555074L;
     private static final Logger LOGGER = Logger.getLogger(LecturerTable.class);
+    private static final String LECTURER_TABLE_ERROR = "Lecturer table arror";
     private String noStudent;
     private String studentName;
     private String mark;
@@ -90,7 +91,7 @@ public class LecturerTable extends TagSupport {
 	    LOGGER.error("Problem in lecture table(tag)", e);
 	    e.printStackTrace();
 	    try {
-		pageContext.getOut().write("Lecturer table arror");
+		pageContext.getOut().write(LECTURER_TABLE_ERROR);
 	    } catch (IOException e1) {
 		LOGGER.error("Problem in lecture table(tag) error message", e1);
 	    }
