@@ -31,16 +31,17 @@ public class SaveLecturerStudentCommand implements Command {
 	}
 	Integer courseProgress;
 	try {
-	    courseProgress = Integer.valueOf(request.getParameter(COURSE_FINISHED));
+	    courseProgress = Integer.valueOf(request
+		    .getParameter(COURSE_FINISHED));
 	} catch (NumberFormatException n) {
 	    courseProgress = 0;
 	}
-	String comment = request.getParameter(COMMENT);	
+	String comment = request.getParameter(COMMENT);
 	contract.setFinishedPercent(courseProgress);
 	contract.setMark(mark);
 	contract.setComment(comment);
 	contractDao.update(contract);
-	
+
 	return (new StartLecturerCommand()).execute(request, response);
     }
 

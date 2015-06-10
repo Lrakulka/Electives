@@ -74,7 +74,8 @@ public class Tests {
 	    {
 		add(new Contract(1, null, null, 1, 1, (short) 30));
 		add(new Contract(2, null, null, 2, 1, (short) 53));
-		add(new Contract(3, "The most worst work ever", 0, 3, 2, (short) 100));
+		add(new Contract(3, "The most worst work ever", 0, 3, 2,
+			(short) 100));
 		add(new Contract(4, "Very bad", 4, 1, 3, (short) 100));
 		add(new Contract(5, null, null, 2, 3, (short) 30));
 		add(new Contract(6, null, null, 4, 4, (short) 23));
@@ -337,8 +338,7 @@ public class Tests {
 		.getStudentDao()
 		.getAllStudent(contracts)
 		.containsAll(
-			DaoFactory.getDaoFactory().getStudentDao()
-				.getAll()));
+			DaoFactory.getDaoFactory().getStudentDao().getAll()));
     }
 
     @AfterClass

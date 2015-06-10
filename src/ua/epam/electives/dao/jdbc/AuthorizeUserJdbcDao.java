@@ -45,8 +45,9 @@ public class AuthorizeUserJdbcDao implements AuthorizeUserDao {
 	Connection conn = DaoJdbcConnection.getConnection();
 	try (Statement query = (Statement) conn.createStatement()) {
 	    ResultSet rs = query.executeQuery("SELECT id FROM " + tableName
-		    + " WHERE BINARY " + lecturerTableInfo.getTableFieldsName()[1]
-		    + "='" + authorizedUser.getFullName() + "' AND BINARY "
+		    + " WHERE BINARY "
+		    + lecturerTableInfo.getTableFieldsName()[1] + "='"
+		    + authorizedUser.getFullName() + "' AND BINARY "
 		    + lecturerTableInfo.getTableFieldsName()[2] + "='"
 		    + authorizedUser.getPwd() + "'");
 	    if (rs.next()) {
@@ -61,11 +62,12 @@ public class AuthorizeUserJdbcDao implements AuthorizeUserDao {
 	} catch (SQLException e) {
 	    LOGGER.error("Authorized user name=" + name, e);
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Authorized user name=" + name);

@@ -21,7 +21,8 @@ public class SubscribeCourseCommand implements Command {
 	DaoFactory facadeFactory = DaoFactory.getDaoFactory();
 	AuthorizedUser user = (AuthorizedUser) request.getSession()
 		.getAttribute(AuthorizeCommand.COMMAND_TYPE);
-	Contract contract = new Contract(-1, "", null, courseId, user.getId(), (short) 0);
+	Contract contract = new Contract(-1, "", null, courseId, user.getId(),
+		(short) 0);
 	facadeFactory.getContractDao().insert(contract);
 	return (new StartStudentCommand()).execute(request, response);
     }

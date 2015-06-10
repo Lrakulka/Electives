@@ -4,8 +4,10 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : en}" scope="session" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="language"
+	value="${not empty param.language ? param.language : not empty language ? language : en}"
+	scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="ua.epam.electives.localization.text" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,13 +19,15 @@
 <body>
 	<fmt:message key="login.label.language" />
 	<form>
-	    <select id="language" name="language" onchange="submit()">
-	        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-	        <option value="uk" ${language == 'uk' ? 'selected' : ''}>Україна</option>
-	    </select>
-    </form>
-        
-	<h1><fmt:message key="login.label.enterToSystem" /></h1>   
+		<select id="language" name="language" onchange="submit()">
+			<option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+			<option value="uk" ${language == 'uk' ? 'selected' : ''}>Україна</option>
+		</select>
+	</form>
+
+	<h1>
+		<fmt:message key="login.label.enterToSystem" />
+	</h1>
 	<form name="loginForm" action="controller" method="post">
 		<input type="hidden" name="command" value="authorizedUser" />
 		<table cellpadding="3pt">

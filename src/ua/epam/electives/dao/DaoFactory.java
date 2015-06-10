@@ -5,8 +5,7 @@ import org.apache.log4j.Logger;
 import ua.epam.electives.dao.jdbc.DaoJdbcFactory;
 
 public abstract class DaoFactory {
-    private static final Logger LOGGER = Logger
-	    .getLogger(DaoFactory.class);
+    private static final Logger LOGGER = Logger.getLogger(DaoFactory.class);
     private static DaoFactory currDaoFactory;
 
     /*

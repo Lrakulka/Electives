@@ -16,7 +16,7 @@ public class LecturerStudentCommand implements Command {
     public static final String CONTRACT_DATA = "contractData";
     public static final String STUDENT_DATA = "studentData";
     public static final String CONTRACT_ID = "contractId";
-    
+
     @Override
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,8 @@ public class LecturerStudentCommand implements Command {
 	Integer contractId = Integer.valueOf(request.getParameter(CONTRACT_ID));
 	DaoFactory facadeFactory = DaoFactory.getDaoFactory();
 	Contract contract = facadeFactory.getContractDao().getById(contractId);
-	Student student = facadeFactory.getStudentDao().getById(contract.getIdStudent());
+	Student student = facadeFactory.getStudentDao().getById(
+		contract.getIdStudent());
 	request.setAttribute(CONTRACT_DATA, contract);
 	request.setAttribute(STUDENT_DATA, student);
 	page = ConfigurationManager.getInstance().getProperty(

@@ -44,7 +44,9 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 		try {
 		    t = tableInfo.getEntityClass().newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-		    LOGGER.error("Get all (new Instance)" + tableInfo.getTableName(), e);
+		    LOGGER.error(
+			    "Get all (new Instance)" + tableInfo.getTableName(),
+			    e);
 		}
 		for (int i = 0; i < obts.length; ++i) {
 		    obts[i] = rs.getObject(i + 1);
@@ -55,11 +57,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 	} catch (SQLException e) {
 	    LOGGER.error("Get all " + tableInfo.getTableName(), e);
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get all " + tableInfo.getTableName() + " size="
@@ -85,9 +88,9 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 		    entity = (T) tableInfo.getEntityClass().newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
 		    LOGGER.error(
-			    "Get (new Instance) " + tableInfo.getTableName() + " "
-				    + tableInfo.getTableFieldsName()[0] + "="
-				    + String.valueOf(id), e);
+			    "Get (new Instance) " + tableInfo.getTableName()
+				    + " " + tableInfo.getTableFieldsName()[0]
+				    + "=" + String.valueOf(id), e);
 		}
 		for (int i = 0; i < tableInfo.getTableFieldsName().length; ++i) {
 		    obts[i] = rs.getObject(i + 1);
@@ -100,11 +103,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 			    + tableInfo.getTableFieldsName()[0] + "="
 			    + String.valueOf(id), e);
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    if (entity == null) {
@@ -133,7 +137,8 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
     @Override
     public T insert(T entity) {
 	Connection conn = DaoJdbcConnection.getConnection();
-	try (PreparedStatement statement = (PreparedStatement) conn.prepareStatement(getInsertQuery(),
+	try (PreparedStatement statement = (PreparedStatement) conn
+		.prepareStatement(getInsertQuery(),
 			Statement.RETURN_GENERATED_KEYS)) {
 	    for (int i = 1; i < tableInfo.getTableFieldsName().length; ++i) {
 		statement.setObject(i, entity.getFieldsValue()[i]);
@@ -149,11 +154,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 			    + entity.toString(), e);
 	    return null;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Insert " + tableInfo.getTableName() + " "
@@ -165,7 +171,8 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
     @Override
     public List<T> insertAll(List<T> list) {
 	Connection conn = DaoJdbcConnection.getConnection();
-	try (PreparedStatement statement = (PreparedStatement) conn.prepareStatement(getInsertQuery(),
+	try (PreparedStatement statement = (PreparedStatement) conn
+		.prepareStatement(getInsertQuery(),
 			Statement.RETURN_GENERATED_KEYS)) {
 	    for (T entity : list) {
 		for (int i = 1; i < tableInfo.getTableFieldsName().length; ++i) {
@@ -185,11 +192,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 	    e.printStackTrace();
 	    return null;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Insert All " + tableInfo.getTableName() + " "
@@ -213,11 +221,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 			    + String.valueOf(id), e);
 	    return false;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Remove " + tableInfo.getTableName() + " "
@@ -246,11 +255,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 			    + list.toString(), e);
 	    return -1;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Delete " + tableInfo.getTableName() + " rows count="
@@ -275,7 +285,8 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
     @Override
     public boolean update(T entity) {
 	Connection conn = DaoJdbcConnection.getConnection();
-	try (PreparedStatement statement = (PreparedStatement) conn.prepareStatement(getUpdateQuery())) {
+	try (PreparedStatement statement = (PreparedStatement) conn
+		.prepareStatement(getUpdateQuery())) {
 	    for (int i = 1; i < tableInfo.getTableFieldsName().length; ++i) {
 		statement.setObject(i, entity.getFieldsValue()[i]);
 	    }
@@ -287,11 +298,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 			    + entity.toString(), e);
 	    return false;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Update " + tableInfo.getTableName() + " "
@@ -304,7 +316,8 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
     public int updateAll(List<T> list) {
 	int rows;
 	Connection conn = DaoJdbcConnection.getConnection();
-	try (PreparedStatement statement = (PreparedStatement) conn.prepareStatement(getUpdateQuery())) {
+	try (PreparedStatement statement = (PreparedStatement) conn
+		.prepareStatement(getUpdateQuery())) {
 	    for (T entity : list) {
 		for (int i = 1; i < tableInfo.getTableFieldsName().length; ++i) {
 		    statement.setObject(i, entity.getFieldsValue()[i]);
@@ -320,11 +333,12 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 			    + list.toString(), e);
 	    return -1;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Update " + tableInfo.getTableName() + " "

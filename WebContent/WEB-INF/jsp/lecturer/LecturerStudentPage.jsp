@@ -23,24 +23,27 @@
 		<fmt:message key="lecturer.student.label" />
 		<c:out value="${requestScope.studentData.fullName}"></c:out>
 	</h2>
-	<form name="StudentForm" action="controller" method="post">		
-		<input type="hidden" name="contractId" value="${requestScope.contractData.id}" />
+	<form name="StudentForm" action="controller" method="post">
+		<input type="hidden" name="contractId"
+			value="${requestScope.contractData.id}" />
 		<table cellpadding="3pt">
 			<tr>
 				<td><fmt:message key="student.course.finished" /> :</td>
-				<c:set var="finishedPercent" value="${requestScope.contractData.finishedPercent}" />
-				<td><input type="text" name="courseFinished" size="3" value="${finishedPercent}"/>%</td>
+				<c:set var="finishedPercent"
+					value="${requestScope.contractData.finishedPercent}" />
+				<td><input type="text" name="courseFinished" size="3"
+					value="${finishedPercent}" />%</td>
 			</tr>
 			<tr>
 				<td><fmt:message key="student.course.mark" /> :</td>
 				<c:set var="mark" value="${requestScope.contractData.mark}" />
 				<c:choose>
 					<c:when test="${mark eq null}">
-						<td><input type="text" name="mark" size="2" value="---"/></td>
+						<td><input type="text" name="mark" size="2" value="---" /></td>
 					</c:when>
 					<c:otherwise>
-      					<td><input type="text" name="mark" size="2" value="${mark}"/></td>
-    				</c:otherwise>
+						<td><input type="text" name="mark" size="2" value="${mark}" /></td>
+					</c:otherwise>
 				</c:choose>
 			</tr>
 			<tr>

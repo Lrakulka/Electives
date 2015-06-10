@@ -29,12 +29,14 @@ public class RequestHelper {
 
     private RequestHelper() {
 	// заполнение таблиц командами
-	lecturerCommands.put(StartLecturerCommand.COMMAND_TYPE, new StartLecturerCommand());
+	lecturerCommands.put(StartLecturerCommand.COMMAND_TYPE,
+		new StartLecturerCommand());
 	lecturerCommands.put(LecturerStudentCommand.TYPE_COMMAND,
 		new LecturerStudentCommand());
 	lecturerCommands.put(SaveLecturerStudentCommand.COMMAND_TYPE,
 		new SaveLecturerStudentCommand());
-	studentCommands.put(StartStudentCommand.COMMAND_TYPE, new StartStudentCommand());
+	studentCommands.put(StartStudentCommand.COMMAND_TYPE,
+		new StartStudentCommand());
 	studentCommands.put(Unsubscrive.COMMAND_TYPE, new Unsubscrive());
 	studentCommands.put(StudentCourseInfo.COMMAND_TYPE,
 		new StudentCourseInfo());
@@ -45,7 +47,8 @@ public class RequestHelper {
 	exitCommand = new ExitCommand();
 	commands.put(ExitCommand.COMMAND_TYPE, exitCommand);
 	commands.put(AuthorizeCommand.COMMAND_TYPE, new AuthorizeCommand());
-	commands.put(AuthorizeFailedCommand.COMMAND_TYPE, new AuthorizeFailedCommand());
+	commands.put(AuthorizeFailedCommand.COMMAND_TYPE,
+		new AuthorizeFailedCommand());
     }
 
     public Command getCommand(HttpServletRequest request) {

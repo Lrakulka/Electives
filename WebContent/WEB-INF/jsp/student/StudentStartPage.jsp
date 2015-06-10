@@ -35,8 +35,9 @@
 		var="buttonUnsubscribe" />
 	<mytags:studentTable studentData="${requestScope.studentData}"
 		noCourses="${noCourses}" lecturerName="${lecturerName}"
-		courseProgress="${courseProgress}" courseName="${courseName}" mark="${mark}"
-		buttonUnsubscribe="${buttonUnsubscribe}" buttonInfo="${buttonInfo}" />
+		courseProgress="${courseProgress}" courseName="${courseName}"
+		mark="${mark}" buttonUnsubscribe="${buttonUnsubscribe}"
+		buttonInfo="${buttonInfo}" />
 	<form name="coursesListForm" action="controller" method="post">
 		<input type="hidden" name="command" value="allCourses" />
 		<fmt:message key="student.button.allCourses" var="buttonValue" />

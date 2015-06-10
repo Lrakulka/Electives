@@ -16,7 +16,7 @@ import ua.epam.electives.maneger.ConfigurationManager;
 public class StartStudentCommand implements Command {
     public static final String COMMAND_TYPE = "loginStudent";
     public static final String STUDENT_DATA = "studentData";
-    
+
     @Override
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
@@ -32,8 +32,8 @@ public class StartStudentCommand implements Command {
 	    studentData[i].setContract(contracts.get(i));
 	    studentData[i].setCourse(daoFactory.getCourseDao().getById(
 		    contracts.get(i).getIdCourse()));
-	    studentData[i].setLecturer(daoFactory.getLecturerDao()
-		    .getLecturer(contracts.get(i).getIdCourse()));
+	    studentData[i].setLecturer(daoFactory.getLecturerDao().getLecturer(
+		    contracts.get(i).getIdCourse()));
 	}
 	request.setAttribute(STUDENT_DATA, studentData);
 	page = ConfigurationManager.getInstance().getProperty(

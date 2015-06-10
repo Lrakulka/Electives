@@ -14,9 +14,11 @@
 <title>Error</title>
 </head>
 <body>
-	<h3><fmt:message key="error.label.title" /></h3>
+	<h3>
+		<fmt:message key="error.label.title" />
+	</h3>
 	<hr />
-		<fmt:message key="error.label.unknown.error" />
+	<fmt:message key="error.label.unknown.error" />
 	<hr />
 
 	<form name="exitForm" action="controller" method="post">

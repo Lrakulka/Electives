@@ -12,10 +12,8 @@ import org.apache.log4j.Logger;
 import ua.epam.electives.dao.CourseDao;
 import ua.epam.electives.entities.Course;
 
-public class CourseJdbcDao extends CommonJdbcDao<Course> implements
-	CourseDao {
-    private static final Logger LOGGER = Logger
-	    .getLogger(CourseJdbcDao.class);
+public class CourseJdbcDao extends CommonJdbcDao<Course> implements CourseDao {
+    private static final Logger LOGGER = Logger.getLogger(CourseJdbcDao.class);
     private final Course.CourseTableInfo courseTableInfo;
 
     public CourseJdbcDao() {
@@ -42,11 +40,12 @@ public class CourseJdbcDao extends CommonJdbcDao<Course> implements
 		    "Get lecturer courses coureseId="
 			    + String.valueOf(lectureId), e);
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get lecturer courses size="

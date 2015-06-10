@@ -24,8 +24,7 @@ public class LecturerJdbcDao extends CommonJdbcDao<Lecturer> implements
     public Lecturer getLecturer(Integer courseId) {
 	Lecturer lecturer = null;
 	NDC.push("Get lecturer by course id");
-	Course course = (new CourseJdbcDao()).getById(
-		courseId);
+	Course course = (new CourseJdbcDao()).getById(courseId);
 	lecturer = getById(course.getId_lecturer());
 	NDC.pop();
 	return lecturer;

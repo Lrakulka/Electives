@@ -50,7 +50,7 @@ public class Controller extends HttpServlet implements Servlet {
 	    page = ConfigurationManager.getInstance().getProperty(
 		    ConfigurationManager.ERROR_PAGE_PATH);
 	}
-	if ((command != null) 
+	if ((command != null)
 		&& ((command.getCommandType() == ExitCommand.COMMAND_TYPE) || (AuthorizeFailedCommand.COMMAND_TYPE
 			.equals(request.getAttribute(RequestHelper.COMMAND))))) {
 	    response.sendRedirect(page);

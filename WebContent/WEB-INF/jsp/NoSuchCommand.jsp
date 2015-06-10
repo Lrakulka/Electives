@@ -14,6 +14,8 @@
 <title><fmt:message key="nosuchpage.label.title" /></title>
 </head>
 <body>
-	<h1><fmt:message key="nosuchpage.label.message" /></h1>
+	<h1>
+		<fmt:message key="nosuchpage.label.message" />
+	</h1>
 </body>
 </html>

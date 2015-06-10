@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="language"
@@ -23,30 +23,30 @@
 		<fmt:message key="student.course.title" />
 		<c:out value="${requestScope.courseData.name}"></c:out>
 	</h2>
-	
-		<table cellpadding="3pt">
-			<tr>
-				<td><fmt:message key="student.course.finished" /> :</td>
-				<td><c:out value="${requestScope.contractData.finishedPercent}"></c:out>%</td>
-			</tr>
-			<tr>
-				<td><fmt:message key="student.course.mark" /> :</td>
-				<c:set var="mark" value="${requestScope.contractData.mark}" />
-				<c:choose>
-					<c:when test="${mark eq null}">
-						<td>---</td>
-					</c:when>
-					<c:otherwise>
-      					<td><c:out value="${mark}"></c:out></td>
-    				</c:otherwise>
-				</c:choose>
-			</tr>
-			<tr>
-				<td><fmt:message key="student.course.comment" /> :</td>
-				<td><c:out value="${requestScope.contractData.comment}"></c:out>
-			</tr>
-		</table>
-	<form name="StudentForm" action="controller" method="post">		
+
+	<table cellpadding="3pt">
+		<tr>
+			<td><fmt:message key="student.course.finished" /> :</td>
+			<td><c:out value="${requestScope.contractData.finishedPercent}"></c:out>%</td>
+		</tr>
+		<tr>
+			<td><fmt:message key="student.course.mark" /> :</td>
+			<c:set var="mark" value="${requestScope.contractData.mark}" />
+			<c:choose>
+				<c:when test="${mark eq null}">
+					<td>---</td>
+				</c:when>
+				<c:otherwise>
+					<td><c:out value="${mark}"></c:out></td>
+				</c:otherwise>
+			</c:choose>
+		</tr>
+		<tr>
+			<td><fmt:message key="student.course.comment" /> :</td>
+			<td><c:out value="${requestScope.contractData.comment}"></c:out>
+		</tr>
+	</table>
+	<form name="StudentForm" action="controller" method="post">
 		<button name="command" value="loginStudent">
 			<fmt:message key="button.onmain" />
 		</button>

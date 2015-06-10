@@ -156,7 +156,7 @@ public class Contract extends Entity {
 	}
 	this.finishedPercent = finished.shortValue();
     }
-    
+
     @Override
     public int hashCode() {
 	final int prime = 31;

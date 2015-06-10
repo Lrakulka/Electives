@@ -27,7 +27,8 @@
 	<fmt:message key="lecturerTable.column.noStudent" var="noStudent" />
 	<fmt:message key="lecturerTable.column.studentName" var="studentName" />
 	<fmt:message key="lecturerTable.column.mark" var="mark" />
-	<fmt:message key="lecturerTable.column.studyProgress" var="studyProgress" />
+	<fmt:message key="lecturerTable.column.studyProgress"
+		var="studyProgress" />
 	<fmt:message key="lecturerTable.column.buttonInfo" var="buttonInfo" />
 	<mytags:lecturerTable lecturerData="${requestScope.lecturerData}"
 		noStudent="${noStudent}" studentName="${studentName}" mark="${mark}"

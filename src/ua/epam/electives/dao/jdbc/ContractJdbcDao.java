@@ -51,11 +51,12 @@ public class ContractJdbcDao extends CommonJdbcDao<Contract> implements
 			    + String.valueOf(courseId), e);
 	    return null;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get course contracts size="
@@ -90,11 +91,12 @@ public class ContractJdbcDao extends CommonJdbcDao<Contract> implements
 			    + String.valueOf(studentId), e);
 	    return null;
 	} finally {
-            if (conn!=null) {
-        	try {
-        	    conn.close();
-    	    	} catch (Exception ignore) {}
-            }
+	    if (conn != null) {
+		try {
+		    conn.close();
+		} catch (Exception ignore) {
+		}
+	    }
 	}
 	if (LOGGER.isDebugEnabled()) {
 	    LOGGER.debug("Get student contracts size="

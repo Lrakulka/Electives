@@ -16,8 +16,7 @@ import ua.epam.electives.entities.Student;
 
 public class StudentJdbcDao extends CommonJdbcDao<Student> implements
 	StudentDao {
-    private static final Logger LOGGER = Logger
-	    .getLogger(StudentJdbcDao.class);
+    private static final Logger LOGGER = Logger.getLogger(StudentJdbcDao.class);
     private final Student.StudentTableInfo tableInfo;
 
     public StudentJdbcDao() {
@@ -29,8 +28,7 @@ public class StudentJdbcDao extends CommonJdbcDao<Student> implements
     public Student getStudent(Integer contractId) {
 	Student student = null;
 	NDC.push("Get student by contract id");
-	Contract contract = (new ContractJdbcDao())
-		.getById(contractId);
+	Contract contract = (new ContractJdbcDao()).getById(contractId);
 	student = getById(contract.getIdStudent());
 	NDC.pop();
 	return student;
