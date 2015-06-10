@@ -44,8 +44,7 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 		try {
 		    t = tableInfo.getEntityClass().newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
+		    LOGGER.error("Get all (new Instance)" + tableInfo.getTableName(), e);
 		}
 		for (int i = 0; i < obts.length; ++i) {
 		    obts[i] = rs.getObject(i + 1);
@@ -85,8 +84,10 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 		try {
 		    entity = (T) tableInfo.getEntityClass().newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
+		    LOGGER.error(
+			    "Get (new Instance) " + tableInfo.getTableName() + " "
+				    + tableInfo.getTableFieldsName()[0] + "="
+				    + String.valueOf(id), e);
 		}
 		for (int i = 0; i < tableInfo.getTableFieldsName().length; ++i) {
 		    obts[i] = rs.getObject(i + 1);

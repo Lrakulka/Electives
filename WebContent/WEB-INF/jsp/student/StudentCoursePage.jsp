@@ -34,7 +34,7 @@
 				<c:set var="mark" value="${requestScope.contractData.mark}" />
 				<c:choose>
 					<c:when test="${mark eq null}">
-						<td>"---"</td>
+						<td>---</td>
 					</c:when>
 					<c:otherwise>
       					<td><c:out value="${mark}"></c:out></td>

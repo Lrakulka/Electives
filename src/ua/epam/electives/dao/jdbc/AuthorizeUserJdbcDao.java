@@ -45,10 +45,10 @@ public class AuthorizeUserJdbcDao implements AuthorizeUserDao {
 	Connection conn = DaoJdbcConnection.getConnection();
 	try (Statement query = (Statement) conn.createStatement()) {
 	    ResultSet rs = query.executeQuery("SELECT id FROM " + tableName
-		    + " WHERE (" + lecturerTableInfo.getTableFieldsName()[1]
-		    + "='" + authorizedUser.getFullName() + "' AND "
+		    + " WHERE BINARY " + lecturerTableInfo.getTableFieldsName()[1]
+		    + "='" + authorizedUser.getFullName() + "' AND BINARY "
 		    + lecturerTableInfo.getTableFieldsName()[2] + "='"
-		    + authorizedUser.getPwd() + "')");
+		    + authorizedUser.getPwd() + "'");
 	    if (rs.next()) {
 		authorizedUser.setId(rs.getInt(1));
 	    } else {
