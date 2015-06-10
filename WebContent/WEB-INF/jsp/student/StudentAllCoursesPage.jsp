@@ -31,7 +31,7 @@
 		courseName="${courseName}" buttonSubscribe="${buttonSubscribe}" />
 
 	<form name="StudentForm" action="controller" method="post">
-		<button name="command" value="login">
+		<button name="command" value="loginStudent">
 			<fmt:message key="button.onmain" />
 		</button>
 	</form>

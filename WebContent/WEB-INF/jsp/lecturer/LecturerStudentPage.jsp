@@ -53,7 +53,7 @@
 		<button name="command" value="saveLecturerStudent">
 			<fmt:message key="button.save" />
 		</button>
-		<button name="command" value="login">
+		<button name="command" value="loginLecturer">
 			<fmt:message key="button.onmain" />
 		</button>
 	</form>
