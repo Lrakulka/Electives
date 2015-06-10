@@ -74,7 +74,7 @@ public class StudentTable extends TagSupport {
 			+ studentData[i].getLecturer().getFullName() + "</td>");
 		tableBuilder.append("<td>"
 			+ studentData[i].getContract().getFinishedPercent()
-			+ "</td>");
+			+ "%</td>");
 		if (studentData[i].getContract().getMark() == null) {
 		    tableBuilder.append("<td>---</td>");
 		} else {

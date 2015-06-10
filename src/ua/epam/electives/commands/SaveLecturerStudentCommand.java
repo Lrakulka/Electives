@@ -29,9 +29,9 @@ public class SaveLecturerStudentCommand implements Command {
 	} catch (NumberFormatException n) {
 	    mark = null;
 	}
-	Short courseProgress;
+	Integer courseProgress;
 	try {
-	    courseProgress = Short.valueOf(request.getParameter(COURSE_FINISHED));
+	    courseProgress = Integer.valueOf(request.getParameter(COURSE_FINISHED));
 	} catch (NumberFormatException n) {
 	    courseProgress = 0;
 	}
@@ -41,7 +41,7 @@ public class SaveLecturerStudentCommand implements Command {
 	contract.setComment(comment);
 	contractDao.update(contract);
 	
-	return (new LoginLecturerCommand()).execute(request, response);
+	return (new StartLecturerCommand()).execute(request, response);
     }
 
     @Override

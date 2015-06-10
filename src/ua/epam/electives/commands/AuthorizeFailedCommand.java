@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import ua.epam.electives.maneger.ConfigurationManager;
 
 public class AuthorizeFailedCommand implements Command {
-    public static final String AUTHORIZED_USER = "authorizedUser";
-    public static final String LOGIN_ERROR = "errorLogIn";
+    public static final String COMMAND_TYPE = "errorLogIn";
 
     @Override
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
 	String page = null;
-	request.setAttribute(LOGIN_ERROR, new Boolean(true));
+	request.setAttribute(COMMAND_TYPE, new Boolean(true));
 	page = ConfigurationManager.getInstance().getProperty(
 		ConfigurationManager.LOGIN_FAILED_PATH);
 	return page;
@@ -25,6 +24,6 @@ public class AuthorizeFailedCommand implements Command {
     @Override
     public String getCommandType() {
 	// TODO Auto-generated method stub
-	return LOGIN_ERROR;
+	return COMMAND_TYPE;
     }
 }

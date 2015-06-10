@@ -19,7 +19,7 @@ public class Unsubscrive implements Command {
 	ContractDao contractDao = DaoFacadeFactory.getDaoFactory().getContractDao();
 	Integer contractId = Integer.valueOf(request.getParameter(CONTRACT_ID));
 	contractDao.remove(contractId);
-	return (new LoginStudentCommand()).execute(request, response);
+	return (new StartStudentCommand()).execute(request, response);
     }
 
     @Override

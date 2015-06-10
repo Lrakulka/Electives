@@ -14,7 +14,7 @@ public class ExitCommand implements Command {
     @Override
     public String execute(HttpServletRequest request,
 	    HttpServletResponse response) throws ServletException, IOException {
-	request.getSession().removeAttribute(AuthorizeFailedCommand.AUTHORIZED_USER);
+	request.getSession().removeAttribute(AuthorizeCommand.COMMAND_TYPE);
 	String page = ConfigurationManager.getInstance().getProperty(
 		ConfigurationManager.START_PAGE_PATH);
 	return page;

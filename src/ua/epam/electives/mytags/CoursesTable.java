@@ -55,8 +55,8 @@ public class CoursesTable extends TagSupport {
 		    .append("<form name=\"LecturerTableForm\" action=\"controller\" "
 			    + "method=\"post\"><input type=\"hidden\" name=\"command\" "
 			    + "value=\"subscribeCourse\" />");
-	    tableBuilder.append("<tr><td>№</td><td>" + courseName + "</td><td>"
-		    + lecturerName + "</td></tr>");
+	    tableBuilder.append("<tr><td>№</td><td>" + lecturerName + "</td><td>"
+		    + courseName + "</td></tr>");
 	    for (String lector : coursesData.keySet()) {
 		courses = coursesData.get(lector);
 		if (courses == null || courses.isEmpty()) {

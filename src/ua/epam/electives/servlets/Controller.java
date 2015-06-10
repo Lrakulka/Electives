@@ -44,15 +44,15 @@ public class Controller extends HttpServlet implements Servlet {
 	     */
 	    page = command.execute(request, response);
 	    // метод возвращает страницу ответа
-	} catch (Exception e) { 
+	} catch (Exception e) {
 	    e.printStackTrace();
 	    // вызов JSP-страницы c cообщением об ошибке
 	    page = ConfigurationManager.getInstance().getProperty(
 		    ConfigurationManager.ERROR_PAGE_PATH);
-	} 
-	if ((command != null)
-		&& ((command.getCommandType() == ExitCommand.COMMAND_TYPE) || (command
-			.getCommandType() == AuthorizeFailedCommand.LOGIN_ERROR))) {
+	}
+	if ((command != null) 
+		&& ((command.getCommandType() == ExitCommand.COMMAND_TYPE) || (AuthorizeFailedCommand.COMMAND_TYPE
+			.equals(request.getAttribute(RequestHelper.COMMAND))))) {
 	    response.sendRedirect(page);
 	} else {
 	    RequestDispatcher dispatcher = getServletContext()

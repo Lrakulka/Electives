@@ -147,6 +147,16 @@ public class Contract extends Entity {
 	this.finishedPercent = finished;
     }
 
+    public void setFinishedPercent(Integer finished) {
+	if (finished > 100) {
+	    finished = 100;
+	}
+	if (finished < 0) {
+	    finished = 0;
+	}
+	this.finishedPercent = finished.shortValue();
+    }
+    
     @Override
     public int hashCode() {
 	final int prime = 31;

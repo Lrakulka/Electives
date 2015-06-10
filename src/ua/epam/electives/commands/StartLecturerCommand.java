@@ -12,9 +12,8 @@ import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.entities.Course;
 import ua.epam.electives.entities.LecturerData;
 import ua.epam.electives.maneger.ConfigurationManager;
-import ua.epam.electives.servlets.RequestHelper;
 
-public class LoginLecturerCommand implements Command {
+public class StartLecturerCommand implements Command {
     public static final String COMMAND_TYPE = "loginLecturer";
     public static final String LECTURER_DATA = "lecturerData";
 
@@ -23,7 +22,7 @@ public class LoginLecturerCommand implements Command {
 	String page = null;
 	DaoFacadeFactory daoFactory = DaoFacadeFactory.getDaoFactory();
 	AuthorizedUser authorizedUser = (AuthorizedUser) request.getSession()
-		.getAttribute(RequestHelper.AUTHORIZED_USER);
+		.getAttribute(AuthorizeCommand.COMMAND_TYPE);
 	List<Course> courses = daoFactory.getCourseDao().getLecturerCourses(
 		authorizedUser.getId());
 	LecturerData[] lecturerData = new LecturerData[courses.size()];

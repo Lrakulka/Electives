@@ -1,4 +1,4 @@
-<%@ page import="ua.epam.electives.commands.LoginLecturerCommand"%>
+<%@ page import="ua.epam.electives.commands.StartLecturerCommand"%>
 <%@ page import="ua.epam.electives.entities.AuthorizedUser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
@@ -23,15 +23,9 @@
 	    </select>
     </form>
         
-    
 	<h1><fmt:message key="login.label.enterToSystem" /></h1>   
-<%-- 	<c:if test="${requestScope.errorLogIn eq true}">
-		<h1>
-			<font color="red"><fmt:message key="login.label.enterError" /></font>
-		</h1>
-	</c:if> --%>
 	<form name="loginForm" action="controller" method="post">
-		<input type="hidden" name="command" value="login" />
+		<input type="hidden" name="command" value="authorizedUser" />
 		<table cellpadding="3pt">
 			<tr>
 				<td><fmt:message key="login.label.username" /> :</td>

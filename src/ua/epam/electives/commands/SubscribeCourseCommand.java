@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import ua.epam.electives.dao.DaoFacadeFactory;
 import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.entities.Contract;
-import ua.epam.electives.servlets.RequestHelper;
 
 public class SubscribeCourseCommand implements Command {
     public static final String TYPE_COMMAND = "subscribeCourse";
@@ -21,10 +20,10 @@ public class SubscribeCourseCommand implements Command {
 	Integer courseId = Integer.valueOf(request.getParameter(COURSE_ID));
 	DaoFacadeFactory facadeFactory = DaoFacadeFactory.getDaoFactory();
 	AuthorizedUser user = (AuthorizedUser) request.getSession()
-		.getAttribute(RequestHelper.AUTHORIZED_USER);
+		.getAttribute(AuthorizeCommand.COMMAND_TYPE);
 	Contract contract = new Contract(-1, "", null, courseId, user.getId(), (short) 0);
 	facadeFactory.getContractDao().insert(contract);
-	return (new LoginStudentCommand()).execute(request, response);
+	return (new StartStudentCommand()).execute(request, response);
     }
 
     @Override
