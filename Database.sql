@@ -100,13 +100,13 @@ CREATE TABLE `lecturer` (
 
 /*!40000 ALTER TABLE `lecturer` DISABLE KEYS */;
 INSERT INTO `lecturer` (`id`,`fullName`,`pwd`) VALUES 
- (0000000001,'Псашаpp','81dc9bdb52d04dc2036dbd8313ed055'),
- (0000000002,'Пвасяp','289dff7669d7a23deef88d2f7129e7'),
- (0000000003,'Пвлад','e369853df766fa44e1edff613f563bd');
+ (0000000001,'Псаша','81dc9bdb52d04dc2036dbd8313ed055'), /*Pass=1234*/
+ (0000000002,'Пвася','289dff7669d7a23deef88d2f7129e7'),	 /*Pass=234*/
+ (0000000003,'Пвлад','e369853df766fa44e1edff613f563bd'); /*Pass=34*/
 /*!40000 ALTER TABLE `lecturer` ENABLE KEYS */;
 
 
---
+
 -- Table structure for table `electives_database`.`student`
 --
 
@@ -124,10 +124,10 @@ CREATE TABLE `student` (
 
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
 INSERT INTO `student` (`id`,`fullName`,`pwd`) VALUES 
- (0000000001,'Сашаp','d93591bdf786e1e4ee2fca799911215'),
- (0000000002,'Васяp','caf1a3dfb55ffedd24130f58c5cfa'),
- (0000000003,'Петя','3c59dc48e8850243be879a5c74d079'),
- (0000000004,'Влад','c4ca4238a0b92382dcc509a6f75849b');
+ (0000000001,'Саша','d93591bdf786e1e4ee2fca799911215'), /*Pass=4321*/
+ (0000000002,'Вася','caf1a3dfb55ffedd24130f58c5cfa'),	/*Pass=321*/
+ (0000000003,'Петя','3c59dc48e8850243be879a5c74d079'),	/*Pass=21*/
+ (0000000004,'Влад','c4ca4238a0b92382dcc509a6f75849b');	/*Pass=1*/
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
