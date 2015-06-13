@@ -10,11 +10,38 @@ import ua.epam.electives.dao.ContractDao;
 import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.Contract;
 
+/**
+ * SaveLecturerStudentCommand a command of controller which save data of student
+ * course to database.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class SaveLecturerStudentCommand implements Command {
+    /**
+     * Describes a type of command as SaveLecturerStudentCommand. Value of field
+     * {@value #COURSES_DATA}.
+     */
     public static final String COMMAND_TYPE = "saveLecturerStudent";
+    /**
+     * Describes a parameter value for getting from request student mark. Value
+     * of field {@value #COURSES_DATA}.
+     */
     public static final String MARK = "mark";
+    /**
+     * Describes a parameter value for getting from request student course
+     * finished process. Value of field {@value #COURSE_FINISHED}.
+     */
     public static final String COURSE_FINISHED = "courseFinished";
+    /**
+     * Describes a parameter value for getting from request lecturer comment for
+     * student. Value of field {@value #COMMENT}.
+     */
     public static final String COMMENT = "comment";
+    /**
+     * Describes a parameter value for getting from request student contract
+     * index in database. Value of field {@value #CONTRACT_ID}.
+     */
     public static final String CONTRACT_ID = "contractId";
 
     @Override
@@ -47,7 +74,6 @@ public class SaveLecturerStudentCommand implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 

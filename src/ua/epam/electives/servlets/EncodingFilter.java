@@ -8,7 +8,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-
+/**
+ * Filter sets encoding for post and get requests.
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class EncodingFilter implements Filter {
 
     @Override

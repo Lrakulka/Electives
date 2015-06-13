@@ -4,12 +4,19 @@ import javax.servlet.http.HttpServlet;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-
+/**
+ * Class designed as configuration manger for web-pages.
+ * @author KrabiySok
+ * version 1.0 13/06/15
+ */
 public class Log4jInitManeger extends HttpServlet {
     private static final Logger LOGGER = Logger
 	    .getLogger(Log4jInitManeger.class);
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Initialization configuration for Log4J.
+     */
     public void init() {
 	String prefix = getServletContext().getRealPath("/");
 	String file = getInitParameter("log4j-init-file");

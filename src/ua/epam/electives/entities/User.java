@@ -1,8 +1,20 @@
 package ua.epam.electives.entities;
 
+/**
+ * Class extends {@link Entity}, represent entity user.
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Class extends {@link Entity}, represent basic class for entity
+ * {@link Lecturer} and {@link Student}.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class User extends Entity {
     private String fullName;
     private String pwd;

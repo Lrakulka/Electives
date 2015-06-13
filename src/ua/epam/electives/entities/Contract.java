@@ -1,15 +1,58 @@
 package ua.epam.electives.entities;
 
+/**
+ * Class extends {@link Entity}, represent entity contract.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class Contract extends Entity {
+    /**
+     * Field of Database table Contract which contains comment from lecturer.
+     */
     private String comment;
+    /**
+     * Field of Database table Contract which contains mark of course from
+     * lecturer.
+     */
     private Integer mark;
+    /**
+     * Field of Database table Contract which contains index of course index key
+     * which study student.
+     */
     private Integer idCourse;
+    /**
+     * Field of Database table Contract which contains index of student index
+     * key.
+     */
     private Integer idStudent;
+    /**
+     * Field of Database table Contract which contains progress of course.
+     */
     private Short finishedPercent;
 
+    /**
+     * Empty constructor.
+     */
     public Contract() {
     }
 
+    /**
+     * Constructor object entity Contract.
+     * 
+     * @param id
+     *            index of contract.
+     * @param comment
+     *            of lecturer.
+     * @param mark
+     *            for course.
+     * @param idCourse
+     *            key index of {@link Course}.
+     * @param idStudent
+     *            key index of {@link Student}.
+     * @param finished
+     *            progress of course study.
+     */
     public Contract(Integer id, String comment, Integer mark, Integer idCourse,
 	    Integer idStudent, Short finished) {
 	this.id = id;
@@ -20,6 +63,12 @@ public class Contract extends Entity {
 	this.finishedPercent = finished;
     }
 
+    /**
+     * Constructor make clone of input contract object.
+     * 
+     * @param contr
+     *            clone contract.
+     */
     public Contract(Contract contr) {
 	this.id = contr.id;
 	this.comment = contr.comment;
@@ -29,53 +78,77 @@ public class Contract extends Entity {
 	this.finishedPercent = contr.finishedPercent;
     }
 
+    /**
+     * Inner class extends {@link TableInfo} with type parameter
+     * {@link Contract}. Represent information and operation of database table
+     * Contract.
+     * 
+     * @author KrabiySok
+     * @version 1.0 13/06/15
+     */
     public static class ContractTableInfo extends TableInfo<Contract> {
 
+	/**
+	 * Empty constructor put to super constructor object class of
+	 * {@link Contract}.
+	 */
 	public ContractTableInfo() {
 	    super(Contract.class);
 	}
     }
 
     /**
-     * @return the id
+     * Get index of contract.
+     * 
+     * @return index of contract.
      */
     public Integer getId() {
 	return id;
     }
 
     /**
+     * Set index of contract.
+     * 
      * @param id
-     *            the id to set
+     *            index of contract
      */
     public void setId(Integer id) {
 	this.id = id;
     }
 
     /**
-     * @return the comment
+     * Get comment of contract.
+     * 
+     * @return comment of contract.
      */
     public String getComment() {
 	return comment;
     }
 
     /**
+     * Set comment of contract.
+     * 
      * @param comment
-     *            the comment to set
+     *            .
      */
     public void setComment(String comment) {
 	this.comment = comment;
     }
 
     /**
-     * @return the mark
+     * Get mark of contract.
+     * 
+     * @return mark of contract.
      */
     public Integer getMark() {
 	return mark;
     }
 
     /**
+     * Set mark of contract.
+     * 
      * @param mark
-     *            the mark to set
+     *            of contract
      */
     public void setMark(Integer mark) {
 	if (mark != null) {
@@ -93,49 +166,66 @@ public class Contract extends Entity {
     }
 
     /**
-     * @return the idCourse
+     * Get index key of entity {@link Course} of contract.
+     * 
+     * @return index key of entity {@link Course}
      */
     public Integer getIdCourse() {
 	return idCourse;
     }
 
     /**
+     * Set index key of entity {@link Course} of contract.
+     * 
      * @param idCourse
-     *            the idCourse to set
+     *            index key of entity {@link Course} of contract.
      */
     public void setIdCourse(Integer idCourse) {
 	this.idCourse = idCourse;
     }
 
     /**
-     * @return the idStudent
+     * Get index key of entity {@link Student} of contract.
+     * 
+     * @return index key of entity {@link Student}
      */
     public Integer getIdStudent() {
 	return idStudent;
     }
 
     /**
+     * Set index key of entity {@link Student} of contract.
+     * 
      * @param idStudent
-     *            the idStudent to set
+     *            index key of entity {@link Student} of contract
      */
     public void setIdStudent(Integer idStudent) {
 	this.idStudent = idStudent;
     }
 
+    /**
+     * Check for course finished.
+     * 
+     * @return true if course id finished or false if not
+     */
     public boolean isFinished() {
 	return finishedPercent == 100 ? true : false;
     }
 
     /**
-     * @return the finished
+     * Get progress of finishing course.
+     * 
+     * @return progress of finishing course.
      */
     public Short getFinishedPercent() {
 	return finishedPercent;
     }
 
     /**
-     * @param finished
-     *            the finished to set
+     * Set progress of finishing course.
+     * 
+     * @param progress
+     *            of finishing course
      */
     public void setFinishedPercent(Short finished) {
 	if (finished > 100) {
@@ -147,6 +237,12 @@ public class Contract extends Entity {
 	this.finishedPercent = finished;
     }
 
+    /**
+     * Set progress of finishing course.
+     * 
+     * @param progress
+     *            of finishing course.
+     */
     public void setFinishedPercent(Integer finished) {
 	if (finished > 100) {
 	    finished = 100;
@@ -209,11 +305,6 @@ public class Contract extends Entity {
 	return true;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
 	return "Contract [id=" + id + ", comment=" + comment + ", mark=" + mark

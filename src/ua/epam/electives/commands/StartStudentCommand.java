@@ -13,8 +13,23 @@ import ua.epam.electives.entities.Contract;
 import ua.epam.electives.entities.StudentData;
 import ua.epam.electives.maneger.ConfigurationManager;
 
+/**
+ * StartStudentCommand a command of controller which forms beginning student
+ * page.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class StartStudentCommand implements Command {
+    /**
+     * Describes a type of command as StartStudentCommand. Value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "loginStudent";
+    /**
+     * Describes a parameter value for setting to request student courses. Value
+     * of field {@value #STUDENT_DATA}.
+     */
     public static final String STUDENT_DATA = "studentData";
 
     @Override
@@ -43,7 +58,6 @@ public class StartStudentCommand implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return null;
     }
 

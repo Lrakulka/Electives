@@ -9,8 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 import ua.epam.electives.dao.ContractDao;
 import ua.epam.electives.dao.DaoFactory;
 
+/**
+ * Unsubscrive a command of controller which delete course from student submit
+ * courses. course information.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class Unsubscrive implements Command {
+    /**
+     * Describes a type of command as Unsubscrive. Value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "unsubscribe";
+    /**
+     * Describes a parameter value for getting from request student contract
+     * index. Value of field {@value #CONTRACT_ID}.
+     */
     public static final String CONTRACT_ID = "courseId";
 
     @Override
@@ -24,7 +39,6 @@ public class Unsubscrive implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 

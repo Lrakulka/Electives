@@ -19,16 +19,36 @@ import ua.epam.electives.commands.SubscribeCourseCommand;
 import ua.epam.electives.commands.Unsubscrive;
 import ua.epam.electives.entities.AuthorizedUser;
 
+/**
+ * Helps controller get work with users commands.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class RequestHelper {
+    /**
+     * Describes parameter value for getting type of command. {@value #COMMAND}.
+     */
     public static final String COMMAND = "command";
     private static RequestHelper instance = null;
     private static Command exitCommand;
+    /**
+     * Basics commands for lecturer and student.
+     */
     HashMap<String, Command> commands = new HashMap<String, Command>();
+    /**
+     * Commands for student.
+     */
     HashMap<String, Command> studentCommands = new HashMap<String, Command>();
+    /**
+     * Commands for lecturer.
+     */
     HashMap<String, Command> lecturerCommands = new HashMap<String, Command>();
 
+    /**
+     * Constructor initialization all commands.
+     */
     private RequestHelper() {
-	// заполнение таблиц командами
 	lecturerCommands.put(StartLecturerCommand.COMMAND_TYPE,
 		new StartLecturerCommand());
 	lecturerCommands.put(LecturerStudentCommand.TYPE_COMMAND,
@@ -51,8 +71,15 @@ public class RequestHelper {
 		new AuthorizeFailedCommand());
     }
 
+    /**
+     * Gets command object.
+     * 
+     * @param request
+     *            the HttpServletRequest object that contains the client's
+     *            request
+     * @return command.
+     */
     public Command getCommand(HttpServletRequest request) {
-	// извлечение команды из запроса
 	String action = (String) request.getAttribute(COMMAND);
 	if (action == null) {
 	    action = request.getParameter(COMMAND);
@@ -74,13 +101,16 @@ public class RequestHelper {
 	    command = exitCommand;
 	}
 	if (command == null) {
-	    // если команды не существует в текущем объекте
 	    command = new NoCommand();
 	}
 	return command;
     }
 
-    // создание единственного объекта по шаблону Singleton
+    /**
+     * Gets singleton of {@link RequestHelper}.
+     * 
+     * @return singleton.
+     */
     public static RequestHelper getInstance() {
 	if (instance == null) {
 	    instance = new RequestHelper();

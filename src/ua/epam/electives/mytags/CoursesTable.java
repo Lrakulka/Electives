@@ -9,14 +9,18 @@ import javax.servlet.jsp.tagext.TagSupport;
 import org.apache.log4j.Logger;
 
 import ua.epam.electives.entities.Course;
-
+/**
+ * Class describe tag for creating table of courses.
+ * @author KrabiySok
+ * version 1.0 13/06/15
+ */
 public class CoursesTable extends TagSupport {
-
-    /**
-     * 
-     */
     private static final long serialVersionUID = -7385266105655041083L;
     private static final Logger LOGGER = Logger.getLogger(CoursesTable.class);
+    /**
+     * Message to user of error in process creation of table.
+     * {@value #COURSE_TABLE_ERROR}.
+     */
     private static final String COURSE_TABLE_ERROR = "Courses table error";
     private String noCourses;
     private String lecturerName;

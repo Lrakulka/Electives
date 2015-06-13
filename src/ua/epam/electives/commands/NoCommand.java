@@ -8,7 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import ua.epam.electives.maneger.ConfigurationManager;
 
+/**
+ * NoCommand a command of controller which forms page for unknown command.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class NoCommand implements Command {
+    /**
+     * Describes a type of command as NoCommand. Value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "no command";
 
     @Override
@@ -25,7 +35,6 @@ public class NoCommand implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 }

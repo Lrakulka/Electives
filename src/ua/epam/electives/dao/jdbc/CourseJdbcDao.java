@@ -12,10 +12,25 @@ import org.apache.log4j.Logger;
 import ua.epam.electives.dao.CourseDao;
 import ua.epam.electives.entities.Course;
 
+/**
+ * Class implements {@link CourseDao} and extends {@link CommonJdbcDao} with
+ * parameter type {@link Course}.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class CourseJdbcDao extends CommonJdbcDao<Course> implements CourseDao {
     private static final Logger LOGGER = Logger.getLogger(CourseJdbcDao.class);
+    /**
+     * Contains object with information about database table
+     * {@link Course.CourseTableInfo}.
+     */
     private final Course.CourseTableInfo courseTableInfo;
 
+    /**
+     * Constructor create object of {@link Course.CourseTableInfo} and set it to
+     * {@link CommonJdbcDao}.
+     */
     public CourseJdbcDao() {
 	courseTableInfo = new Course.CourseTableInfo();
 	super.setTableInfo(courseTableInfo);

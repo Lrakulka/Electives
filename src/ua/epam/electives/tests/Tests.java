@@ -20,6 +20,12 @@ import ua.epam.electives.entities.Course;
 import ua.epam.electives.entities.Lecturer;
 import ua.epam.electives.entities.Student;
 
+/**
+ * JUnit test for DAO.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 @SuppressWarnings("serial")
 public class Tests {
     private static ContractDao contractDao = DaoFactory.getDaoFactory()

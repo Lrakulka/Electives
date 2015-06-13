@@ -10,8 +10,22 @@ import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.entities.Contract;
 
+/**
+ * StudentCourseInfo a command of controller which submit student to course.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class SubscribeCourseCommand implements Command {
+    /**
+     * Describes a type of command as SubscribeCourseCommand. Value of field
+     * {@value #TYPE_COMMAND}.
+     */
     public static final String TYPE_COMMAND = "subscribeCourse";
+    /**
+     * Describes a parameter value for getting from request student course
+     * index. Value of field {@value #COURSE_ID}.
+     */
     public static final String COURSE_ID = "courseId";
 
     @Override

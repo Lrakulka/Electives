@@ -12,10 +12,24 @@ import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.entities.Lecturer;
 import ua.epam.electives.entities.Student;
 
+/**
+ * Class implements {@link AuthorizeUserDao}.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class AuthorizeUserJdbcDao implements AuthorizeUserDao {
     private static final Logger LOGGER = Logger
-	    .getLogger(ContractJdbcDao.class);
+	    .getLogger(AuthorizeUserJdbcDao.class);
+    /**
+     * Contains information about organization of database table
+     * {@link Lecturer}.
+     */
     private Lecturer.LecturerTableInfo lecturerTableInfo = new Lecturer.LecturerTableInfo();
+    /**
+     * Contains information about organization of database table {@link Student}
+     * .
+     */
     private Student.StudentTableInfo studentTableInfo = new Student.StudentTableInfo();
 
     @Override
@@ -39,6 +53,20 @@ public class AuthorizeUserJdbcDao implements AuthorizeUserDao {
 	return authorizedUser;
     }
 
+    /**
+     * Makes authorization for user lecturer or student.
+     * 
+     * @param name
+     *            user login.
+     * @param pwd
+     *            user password.
+     * @param tableName
+     *            name of table(student or lecturer).
+     * @return object of {@link AuthorizedUser} or null if authorization failed.
+     * @throws Exception
+     *             when in database found more then one user with same
+     *             {@link name} and {@link pwd}.
+     */
     private AuthorizedUser authorizeUser(String name, String pwd,
 	    String tableName) throws Exception {
 	AuthorizedUser authorizedUser = new AuthorizedUser(name, pwd);

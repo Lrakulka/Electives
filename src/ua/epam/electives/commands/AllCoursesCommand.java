@@ -13,8 +13,23 @@ import ua.epam.electives.entities.Course;
 import ua.epam.electives.entities.Lecturer;
 import ua.epam.electives.maneger.ConfigurationManager;
 
+/**
+ * AllCoursesCommand is one of the controller command which allow an application
+ * to show to user all courses.
+ * 
+ * @author KrabiySok
+ * @version 1.0 12/06/15
+ */
 public class AllCoursesCommand implements Command {
+    /**
+     * Describes a type of command as AllCoursesCommand value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "allCourses";
+    /**
+     * Field value uses as parameter for sending data about courses and
+     * lecturers to web-page value of field {@value #COURSES_DATA}.
+     */
     public static final String COURSES_DATA = "coursesData";
 
     @Override
@@ -39,7 +54,6 @@ public class AllCoursesCommand implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 

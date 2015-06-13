@@ -13,8 +13,23 @@ import ua.epam.electives.entities.Course;
 import ua.epam.electives.entities.LecturerData;
 import ua.epam.electives.maneger.ConfigurationManager;
 
+/**
+ * StartLecturerCommand a command of controller which forms beginning lecturer
+ * page.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class StartLecturerCommand implements Command {
+    /**
+     * Describes a type of command as StartLecturerCommand. Value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "loginLecturer";
+    /**
+     * Describes a parameter value for setting to request lecturer courses data.
+     * Value of field {@value #LECTURER_DATA}.
+     */
     public static final String LECTURER_DATA = "lecturerData";
 
     public String execute(HttpServletRequest request,
@@ -43,7 +58,6 @@ public class StartLecturerCommand implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 }

@@ -12,13 +12,27 @@ import java.sql.Statement;
 
 import ua.epam.electives.dao.ContractDao;
 import ua.epam.electives.entities.Contract;
-
+/**
+ * Class implements {@link ContractDao} and {@link CommonJdbcDao} extends with
+ * parameter type {@link Contract}.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class ContractJdbcDao extends CommonJdbcDao<Contract> implements
 	ContractDao {
     private static final Logger LOGGER = Logger
 	    .getLogger(ContractJdbcDao.class);
+    /**
+     * Contains object with information about database table
+     * {@link Contract.ContractTableInfo}.
+     */
     private final Contract.ContractTableInfo contractTableInfo;
 
+    /**
+     * Constructor create object of {@link Contract.ContractTableInfo} and set
+     * it to {@link CommonJdbcDao}.
+     */
     public ContractJdbcDao() {
 	contractTableInfo = new Contract.ContractTableInfo();
 	super.setTableInfo(contractTableInfo);

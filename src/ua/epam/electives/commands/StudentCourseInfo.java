@@ -11,10 +11,33 @@ import ua.epam.electives.entities.Contract;
 import ua.epam.electives.entities.Course;
 import ua.epam.electives.maneger.ConfigurationManager;
 
+/**
+ * StudentCourseInfo a command of controller which forms page with student
+ * course information.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class StudentCourseInfo implements Command {
+    /**
+     * Describes a type of command as StudentCourseInfo. Value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "courseInfo";
+    /**
+     * Describes a parameter value for getting from request student course
+     * index. Value of field {@value #CONTRACT_ID}.
+     */
     public static final String CONTRACT_ID = "courseId";
+    /**
+     * Describes a parameter value for setting to request student course data.
+     * Value of field {@value #COURSE_DATA}.
+     */
     public static final String COURSE_DATA = "courseData";
+    /**
+     * Describes a parameter value for setting to request student contract data.
+     * Value of field {@value #CONTRACT_DATA}.
+     */
     public static final String CONTRACT_DATA = "contractData";
 
     @Override
@@ -35,7 +58,6 @@ public class StudentCourseInfo implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 

@@ -10,10 +10,32 @@ import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.entities.AuthorizedUser;
 import ua.epam.electives.servlets.RequestHelper;
 
+/**
+ * AuthorizeCommand a command of controller which makes authorization of uses.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class AuthorizeCommand implements Command {
+    /**
+     * Describes a type of command as AuthorizeCommand. Value of field
+     * {@value #COMMAND_TYPE}.
+     */
     public static final String COMMAND_TYPE = "authorizedUser";
+    /**
+     * Describes a parameter value for getting user login Value of field
+     * {@value #PARAM_NAME_LOGIN}.
+     */
     private static final String PARAM_NAME_LOGIN = "userName";
+    /**
+     * Describes a parameter value for getting user password Value of field
+     * {@value #PARAM_NAME_PASSWORD}.
+     */
     private static final String PARAM_NAME_PASSWORD = "password";
+    /**
+     * Describes a parameter value for getting number of loop call of method
+     * execute Value of field {@value #LOOP_PROTECTION}.
+     */
     private static final String LOOP_PROTECTION = "loopProtection";
 
     @Override
@@ -51,7 +73,6 @@ public class AuthorizeCommand implements Command {
 
     @Override
     public String getCommandType() {
-	// TODO Auto-generated method stub
 	return COMMAND_TYPE;
     }
 

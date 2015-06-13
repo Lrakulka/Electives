@@ -15,17 +15,39 @@ import ua.epam.electives.entities.Entity.TableInfo;
 
 import com.mysql.jdbc.PreparedStatement;
 
+/**
+ * Class implements {@link CommonDao} and describe all common operation with
+ * database tables.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
     private static final Logger LOGGER = Logger.getLogger(CommonJdbcDao.class);
     private TableInfo<?> tableInfo;
 
+    /**
+     * Empty constructor
+     */
     CommonJdbcDao() {
     }
 
+    /**
+     * Constructor with information about table of database.
+     * 
+     * @param tableInfo
+     *            information of used database table
+     */
     CommonJdbcDao(TableInfo<?> tableInfo) {
 	this.tableInfo = tableInfo;
     }
 
+    /**
+     * Set information about database table.
+     * 
+     * @param tableInfo
+     *            information about database table.
+     */
     void setTableInfo(TableInfo<?> tableInfo) {
 	this.tableInfo = tableInfo;
     }

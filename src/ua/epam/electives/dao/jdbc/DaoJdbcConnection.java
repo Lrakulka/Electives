@@ -12,12 +12,31 @@ import javax.naming.NamingException;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
 
+/**
+ * Class present poolConnection to database. Also class has method for creation
+ * of local connection to database for JUnit test.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class DaoJdbcConnection {
     private static final Logger LOGGER = Logger
 	    .getLogger(DaoJdbcConnection.class);
+    /**
+     * Pool connection.
+     */
     private static DataSource dataSource;
+    /**
+     * Flag of program JUnit testing.
+     */
     private static boolean isTest;
 
+    /**
+     * Create poolConection if it not created and returns connection to
+     * database.
+     * 
+     * @return connection to database.
+     */
     protected static Connection getConnection() {
 	Connection connection = null;
 	if (!isTest) { // For JUnit tests
@@ -45,14 +64,16 @@ public class DaoJdbcConnection {
     }
 
     /**
-     * Only for JUnit tests. Create pool with properties from context.xml
+     * Only for JUnit tests. Set flag {@link isTest} to true.
      */
     public static void startTestJdbcDao() {
 	isTest = true;
     }
 
     /**
-     * Only for JUnit tests. Create one connection to database
+     * Only for JUnit tests. Create one connection to database.
+     * 
+     * @return connection to database.
      */
     private static Connection getConnectionForTest() {
 	Connection conn = null;
@@ -80,12 +101,18 @@ public class DaoJdbcConnection {
     }
 
     /**
-     * Only for JUnit tests. Delete created pool from context.xml
+     * Only for JUnit tests. Set flag {@link isTest} to false.
      */
     public static void stopTestJdbcDao() {
 	isTest = false;
     }
 
+    /**
+     * Clean database table from all rows.
+     * 
+     * @param tableName
+     *            name of database table.
+     */
     public static void cleanTable(String tableName) {
 	try (Statement query = (Statement) DaoJdbcConnection.getConnection()
 		.createStatement()) {

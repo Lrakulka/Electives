@@ -7,14 +7,18 @@ import javax.servlet.jsp.tagext.TagSupport;
 import org.apache.log4j.Logger;
 
 import ua.epam.electives.entities.StudentData;
-
+/**
+ * Class describe tag for creating table of students courses.
+ * @author KrabiySok
+ * version 1.0 13/06/15
+ */
 public class StudentTable extends TagSupport {
-
-    /**
-     * 
-     */
     private static final long serialVersionUID = -2104961797473796800L;
     private static final Logger LOGGER = Logger.getLogger(StudentTable.class);
+    /**
+     * Message to user of error in process creation of table.
+     * {@value #STUDENT_TABLE_ERROR}.
+     */
     private static final String STUDENT_TABLE_ERROR = "Student table error";
     private StudentData[] studentData;
     private String noCourses;

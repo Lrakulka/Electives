@@ -11,10 +11,33 @@ import ua.epam.electives.entities.Contract;
 import ua.epam.electives.entities.Student;
 import ua.epam.electives.maneger.ConfigurationManager;
 
+/**
+ * LecturerStudentCommand a command of controller which forms page of student.
+ * course for user-lecturer.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class LecturerStudentCommand implements Command {
+    /**
+     * Describes a type of command as LecturerStudentCommand. Value of field
+     * {@value #TYPE_COMMAND}.
+     */
     public static final String TYPE_COMMAND = "lecturerStudent";
+    /**
+     * Describes a parameter value for setting request data about student
+     * contract. Value of field {@value #CONTRACT_DATA}.
+     */
     public static final String CONTRACT_DATA = "contractData";
+    /**
+     * Describes a parameter value for setting request data about student. Value
+     * of field {@value #STUDENT_DATA}.
+     */
     public static final String STUDENT_DATA = "studentData";
+    /**
+     * Describes a parameter value for getting from request student contract
+     * index. Value of field {@value #CONTRACT_ID}.
+     */
     public static final String CONTRACT_ID = "contractId";
 
     @Override

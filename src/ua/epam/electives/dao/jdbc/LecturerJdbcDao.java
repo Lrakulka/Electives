@@ -10,12 +10,19 @@ import ua.epam.electives.entities.Course;
 import ua.epam.electives.entities.Lecturer;
 
 /**
+ * Class implements {@link LecturerDao} and extends {@link CommonJdbcDao} with
+ * parameter type {@link Lecturer}.
+ * 
  * @author KrabiySok
- *
+ * @version 1.0 13/06/15
  */
 public class LecturerJdbcDao extends CommonJdbcDao<Lecturer> implements
 	LecturerDao {
 
+    /**
+     * Constructor create object of {@link Lecturer.LecturerTableInfo} and set
+     * it to {@link CommonJdbcDao}.
+     */
     public LecturerJdbcDao() {
 	super(new Lecturer.LecturerTableInfo());
     }

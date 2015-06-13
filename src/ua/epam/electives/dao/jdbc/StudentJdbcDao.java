@@ -14,11 +14,26 @@ import ua.epam.electives.dao.StudentDao;
 import ua.epam.electives.entities.Contract;
 import ua.epam.electives.entities.Student;
 
+/**
+ * Class implements {@link StudentDao} and extends {@link CommonJdbcDao} with
+ * parameter type {@link Student}.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class StudentJdbcDao extends CommonJdbcDao<Student> implements
 	StudentDao {
     private static final Logger LOGGER = Logger.getLogger(StudentJdbcDao.class);
+    /**
+     * Contains object with information about database table
+     * {@link Student.StudentTableInfo}.
+     */
     private final Student.StudentTableInfo tableInfo;
 
+    /**
+     * Constructor create object of {@link Student.StudentTableInfo} and set it
+     * to {@link CommonJdbcDao}.
+     */
     public StudentJdbcDao() {
 	tableInfo = new Student.StudentTableInfo();
 	super.setTableInfo(tableInfo);

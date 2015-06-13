@@ -4,49 +4,58 @@ import org.apache.log4j.Logger;
 
 import ua.epam.electives.dao.jdbc.DaoJdbcFactory;
 
+/**
+ * Abstract class which gives objects of all DAO.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public abstract class DaoFactory {
     private static final Logger LOGGER = Logger.getLogger(DaoFactory.class);
+    /**
+     * Singleton object of class {@link DaoFactory}
+     */
     private static DaoFactory currDaoFactory;
 
-    /*
-     * Gives access to lecture data
+    /**
+     * Create object of lecture DAO class {@link LecturerDao}.
      * 
-     * @return DAO of lecturer
+     * @return object of lecturer DAO.
      */
     public abstract LecturerDao getLecturerDao();
 
-    /*
-     * Gives access to student data
+    /**
+     * Create object of student DAO class {@link StudentDao}.
      * 
-     * @return DAO of student
+     * @return object of student DAO.
      */
     public abstract StudentDao getStudentDao();
 
-    /*
-     * Gives access to course data
+    /**
+     * Create object of course DAO class {@link CourseDao}.
      * 
-     * @return DAO of course
+     * @return object of course DAO.
      */
     public abstract CourseDao getCourseDao();
 
-    /*
-     * Gives access to contract data
+    /**
+     * Create object of contract DAO class {@link ContractDao}.
      * 
-     * @return DAO of contract
+     * @return object of contract DAO.
      */
     public abstract ContractDao getContractDao();
 
-    /*
-     * Gives access to Authorize user data
+    /**
+     * Create object of authorize user DAO class {@link AuthorizeUserDao}.
      * 
-     * @return DAO of contract
+     * @return object of authorize user DAO.
      */
     public abstract AuthorizeUserDao getAuthorizeUser();
 
     /**
-     * Gives access to DAOs
+     * Gives singleton object of {@link DaoFactory} and if not exist create it.
      * 
-     * @return DAO Factory object
+     * @return object of {@link DaoFactory}
      */
     public static DaoFactory getDaoFactory() {
 	if (currDaoFactory == null) {

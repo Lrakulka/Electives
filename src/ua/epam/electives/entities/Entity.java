@@ -3,42 +3,111 @@ package ua.epam.electives.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract class which presents common field and operation of program entity.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public abstract class Entity {
+    /**
+     * Index key of entity in the database table.
+     */
     Integer id;
 
+    /**
+     * Empty Constructor.
+     */
     public Entity() {
     }
 
+    /**
+     * Constructor sets key index to entity.
+     * 
+     * @param id
+     *            key index of entity.
+     */
     public Entity(Integer id) {
 	this.id = id;
     }
 
+    /**
+     * Gets key index of entity.
+     * 
+     * @return key index of entity.
+     */
     public Integer getId() {
 	return id;
     }
 
+    /**
+     * Sets key index of entity.
+     * 
+     * @param id
+     *            key index of entity.
+     */
     public void setId(Integer id) {
 	this.id = id;
     }
 
+    /**
+     * Methods sets all fields values of entity.
+     * 
+     * @param obts
+     *            fields values
+     */
     public abstract void setValues(Object... obts);
 
+    /**
+     * Gets array of entity fields value.
+     * 
+     * @return array of entity values.
+     */
     public abstract Object[] getFieldsValue();
 
+    /**
+     * Class describe information about entity database table.
+     * 
+     * @author KrabiySok
+     * @version 1.0 13/06/15
+     * @param <E>
+     *            type of entity
+     */
     public static class TableInfo<E extends Entity> {
+	/**
+	 * Entity class object.
+	 */
 	private Class<E> cl;
+	/**
+	 * Name of database table.
+	 */
 	String tableName;
+	/**
+	 * Array of database table names.
+	 */
 	String[] tableVieldsName;
 
+	/**
+	 * Sets entity class object.
+	 * @param cl entity class object.
+	 */
 	@SuppressWarnings("unchecked")
 	public TableInfo(Class<?> cl) {
 	    this.cl = (Class<E>) cl;
 	}
 
+	/**
+	 * Gets entity class object.
+	 * @return entity class object.
+	 */
 	public Class<E> getEntityClass() {
 	    return cl;
 	}
 
+	/**
+	 * Gets database table name.
+	 * @return database table name
+	 */
 	public String getTableName() {
 	    if (tableName == null) {
 		tableName = cl.getSimpleName();
@@ -46,6 +115,10 @@ public abstract class Entity {
 	    return tableName;
 	}
 
+	/**
+	 * Gets names of database table fields from entity class fields.
+	 * @return array of database table fields name.
+	 */
 	public String[] getTableFieldsName() {
 	    if (tableVieldsName == null) {
 		ArrayList<String> list = new ArrayList<>();
@@ -58,6 +131,12 @@ public abstract class Entity {
 	    return tableVieldsName;
 	}
 
+	/**
+	 * Gets entity fields name.
+	 * @param list fields from privies father classes.
+	 * @param c current class object.
+	 * @return list of class fields names.
+	 */
 	private List<String> getTableFields(List<String> list, Class<?> c) {
 	    if (c != null) {
 		ArrayList<String> listL = new ArrayList<>();

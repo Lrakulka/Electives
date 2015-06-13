@@ -1,26 +1,70 @@
 package ua.epam.electives.entities;
 
+import ua.epam.electives.entities.Entity.TableInfo;
+
+/**
+ * Class extends {@link Entity}, represent entity course.
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class Course extends Entity {
+    /**
+     * Name of course.
+     */
     private String name;
+    /**
+     * Identificator of lecturer of this course.
+     */
     private Integer idLecturer;
 
+    /**
+     * Empty constructor.
+     */
     public Course() {
     }
 
+    /**
+     * Constructor set values of course object.
+     * 
+     * @param id
+     *            identificator of course.
+     * @param name
+     *            of course.
+     * @param idLecturer
+     *            identificator of lector.
+     */
     public Course(Integer id, String name, Integer idLecturer) {
 	this.id = id;
 	this.name = name;
 	this.idLecturer = idLecturer;
     }
 
+    /**
+     * Constructor make copy of input course values.
+     * 
+     * @param course values for object.
+     */
     public Course(Course course) {
 	this.id = course.id;
 	this.name = course.name;
 	this.idLecturer = course.idLecturer;
     }
 
-    public static class CourseTableInfo extends TableInfo<Student> {
 
+    /**
+     * Inner class extends {@link TableInfo} with type parameter
+     * {@link Course}. Represent information and operation of database table
+     * Course.
+     * 
+     * @author KrabiySok
+     * @version 1.0 13/06/15
+     */
+    public static class CourseTableInfo extends TableInfo<Course> {
+	/**
+	 * Empty constructor put to super constructor object class of
+	 * {@link Course}.
+	 */
 	public CourseTableInfo() {
 	    super(Course.class);
 	}
@@ -140,7 +184,7 @@ public class Course extends Entity {
 
     @Override
     public Object[] getFieldsValue() {
-	// Fourth field(isLecturer) is not used in table
+	// Fourth field(isLecturer) is not used in database table
 	Object[] values = new Object[3];
 	values[0] = this.id;
 	values[1] = this.name;

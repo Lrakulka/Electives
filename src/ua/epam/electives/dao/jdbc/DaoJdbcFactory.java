@@ -9,6 +9,12 @@ import ua.epam.electives.dao.DaoFactory;
 import ua.epam.electives.dao.LecturerDao;
 import ua.epam.electives.dao.StudentDao;
 
+/**
+ * Class extends {@link DaoFactory}
+ * 
+ * @author KrabiySok
+ * @version 1.0 13/06/15
+ */
 public class DaoJdbcFactory extends DaoFactory {
     private static final Logger LOGGER = Logger.getLogger(DaoJdbcFactory.class);
 
