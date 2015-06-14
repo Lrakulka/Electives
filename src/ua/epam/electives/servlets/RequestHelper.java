@@ -30,7 +30,6 @@ public class RequestHelper {
      * Describes parameter value for getting type of command. {@value #COMMAND}.
      */
     public static final String COMMAND = "command";
-    private static RequestHelper instance = null;
     private static Command exitCommand;
     /**
      * Basics commands for lecturer and student.
@@ -106,15 +105,16 @@ public class RequestHelper {
 	return command;
     }
 
+    public static class SingletonHolder {
+	public static final RequestHelper HOLDER_INSTANCE = new RequestHelper();
+    }
+
     /**
      * Gets singleton of {@link RequestHelper}.
      * 
-     * @return singleton.
+     * @return singleton instance.
      */
     public static RequestHelper getInstance() {
-	if (instance == null) {
-	    instance = new RequestHelper();
-	}
-	return instance;
+	return SingletonHolder.HOLDER_INSTANCE;
     }
 }
