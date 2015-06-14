@@ -59,7 +59,6 @@ public class Controller extends HttpServlet implements Servlet {
 	    command = requestHelper.getCommand(request);
 	    page = command.execute(request, response);
 	} catch (Exception e) {
-	    e.printStackTrace();
 	    page = ConfigurationManager.getInstance().getProperty(
 		    ConfigurationManager.ERROR_PAGE_PATH);
 	}

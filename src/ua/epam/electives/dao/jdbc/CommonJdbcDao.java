@@ -211,7 +211,6 @@ public class CommonJdbcDao<T extends Entity> implements CommonDao<T> {
 	    LOGGER.error(
 		    "Insert All " + tableInfo.getTableName() + " "
 			    + list.toString(), e);
-	    e.printStackTrace();
 	    return null;
 	} finally {
 	    if (conn != null) {

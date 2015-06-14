@@ -94,7 +94,6 @@ public class LecturerTable extends TagSupport {
 	    pageContext.getOut().write(tableBuilder.toString());
 	} catch (Exception e) {
 	    LOGGER.error("Problem in lecture table(tag)", e);
-	    e.printStackTrace();
 	    try {
 		pageContext.getOut().write(LECTURER_TABLE_ERROR);
 	    } catch (IOException e1) {
