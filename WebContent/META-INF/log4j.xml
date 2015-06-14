@@ -8,6 +8,7 @@
 	<appender name="bulk" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="File" value="log/electives.log" />
 		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
 		<param name="Encoding" value="UTF-8" />
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
 			<param name="ConversionPattern" value="%d{ISO8601} [%-5p][%-16.16t][%40.40c] - %m%n" />
